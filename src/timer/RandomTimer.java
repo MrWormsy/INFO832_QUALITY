@@ -7,10 +7,12 @@ import java.util.Random;
  */
 
 enum RandomDistribution {
-    POISSON, EXP, POSIBILIST, GAUSSIAN;
+    POISSON, EXP, UNIFORM, GAUSSIAN;
 }
 
 public class RandomTimer implements Timer {
+
+    // ===== Variables =====
 
     private Random random;
     private RandomDistribution distribution;
@@ -18,6 +20,9 @@ public class RandomTimer implements Timer {
     private double mean;
     private double limitInferior;
     private double limitSuperior;
+
+    // ===== Constructors =====
+
     /**
      * @param param constraint
      * @throws IncorrectDistributionException
@@ -47,9 +52,15 @@ public class RandomTimer implements Timer {
      * @throws IncorrectDistributionException
      */
     public RandomTimer(RandomDistribution distribution, int limitInferior, int limitSuperior) throws IncorrectDistributionException {
-        if (distribution == RandomDistribution.POSIBILIST || distribution == RandomDistribution.GAUSSIAN) {
+
+        // If the inferior limit is greater than the limit superior there is an error
+        if (limitInferior > limitSuperior) {
+            throw new IncorrectDistributionException("Inferior limit cannot be greater than the Superior limit");
+        }
+
+        if (distribution == RandomDistribution.GAUSSIAN || distribution == RandomDistribution.UNIFORM) {
             this.distribution = distribution;
-            this.mean = (double) limitInferior + ((double) limitSuperior - limitInferior) / 2;
+            this.mean = (limitSuperior + limitInferior) / 2.0;
             this.rate = Double.NaN;
             this.limitInferior = limitInferior;
             this.limitSuperior = limitSuperior;
@@ -59,29 +70,20 @@ public class RandomTimer implements Timer {
         }
     }
 
+    // ===== Methods ======
 
-
-    public static RandomDistribution getDistributionFromString(String distributionName) {
-        return RandomDistribution.valueOf(distributionName.toUpperCase());
-    }
-
-    public static String getDistributionName(RandomDistribution distribution) {
-        return distribution.name();
-    }
-
-    public String getDistribution() {
+    public String getDistributionName() {
         return this.distribution.name();
     }
 
-    public String getDistributionParam() {
-        if (distribution == RandomDistribution.EXP) {
+    public String getDistributionParams() {
+        if (this.distribution == RandomDistribution.EXP) {
             return "rate: " + this.rate;
-        } else if (distribution == RandomDistribution.POISSON) {
+        } else if (this.distribution == RandomDistribution.POISSON) {
             return "mean: " + this.mean;
-        } else if (distribution == RandomDistribution.POSIBILIST || distribution == RandomDistribution.GAUSSIAN) {
-            return "lolim: " + this.limitInferior + " hilim: " + this.limitSuperior;
+        } else if (this.distribution == RandomDistribution.UNIFORM || this.distribution == RandomDistribution.GAUSSIAN) {
+            return "Inferior limit: " + this.limitInferior + " Superior limit: " + this.limitSuperior;
         }
-
         return "null";
     }
 
@@ -89,50 +91,12 @@ public class RandomTimer implements Timer {
         return this.mean;
     }
 
-    public String toString() {
-        String s = this.getDistribution();
-        switch (this.distribution) {
-            case POSIBILIST:
-                s += " LoLim:" + this.limitInferior + " HiLim:" + this.limitSuperior;
-                break;
-            case POISSON:
-                s += " mean:" + this.mean;
-                break;
-            case EXP:
-                s += " rate:" + this.rate;
-                break;
-            case GAUSSIAN:
-                s += " LoLim:" + this.limitInferior + " HiLim:" + this.limitSuperior;
-                break;
-        }
-
-        return s;
-    }
-
-    /* (non-Javadoc)
-     * @see methodInvocator.Timer#next()
-     */
-    @Override
-    public Integer next() {
-        switch (this.distribution) {
-            case POSIBILIST:
-                return this.nextTimePosibilist();
-            case POISSON:
-                return this.nextTimePoisson();
-            case EXP:
-                return this.nextTimeExp();
-            case GAUSSIAN:
-                return this.nextTimeGaussian();
-        }
-        return -1; // Theoretically impossible !!!
-    }
-
     /**
      * Give good mean
      * Give wrong variance
      */
-    private int nextTimePosibilist() {
-        return (int) (this.limitInferior + (this.random.nextDouble() * (this.limitSuperior - this.limitInferior)));
+    private int nextTimeUniform() {
+        return (int) (this.random.nextInt((int) ((this.limitSuperior - this.limitInferior) + 1)) + this.limitInferior);
     }
 
     /**
@@ -166,6 +130,45 @@ public class RandomTimer implements Timer {
     @Override
     public boolean hasNext() {
         return true;
+    }
+
+    /* (non-Javadoc)
+     * @see methodInvocator.Timer#next()
+     */
+    @Override
+    public Integer next() {
+        switch (this.distribution) {
+            case UNIFORM:
+                return this.nextTimeUniform();
+            case POISSON:
+                return this.nextTimePoisson();
+            case EXP:
+                return this.nextTimeExp();
+            case GAUSSIAN:
+                return this.nextTimeGaussian();
+        }
+        return -1; // Theoretically impossible !!!
+    }
+
+    @Override
+    public String toString() {
+        String stringToReturn = this.getDistributionName();
+        switch (this.distribution) {
+            case UNIFORM:
+                stringToReturn += " Inferior limit:" + this.limitInferior + " Superior limit:" + this.limitSuperior;
+                break;
+            case POISSON:
+                stringToReturn += " mean:" + this.mean;
+                break;
+            case EXP:
+                stringToReturn += " rate:" + this.rate;
+                break;
+            case GAUSSIAN:
+                stringToReturn += " Inferior limit:" + this.limitInferior + " Superior limit:" + this.limitSuperior;
+                break;
+        }
+
+        return stringToReturn;
     }
 }
 
