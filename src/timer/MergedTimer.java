@@ -22,20 +22,32 @@ public class MergedTimer implements Timer {
      */
     private Timer timer2;
 
-    // ===== Constructor =====
-
+    /**
+     * <p>Merge two given timers</p>
+     *
+     * @param timer1 The first timer to merge
+     * @param timer2 The second timer to merge
+     */
     public MergedTimer(Timer timer1, Timer timer2) {
         this.timer1 = timer1;
         this.timer2 = timer2;
     }
 
-
-
+    /**
+     * <p>Returns true if the two {@link Timer} used to create the {@link MergedTimer} have both a next value to return</p>
+     *
+     * @return true if the {@link MergedTimer} has a next value to return, false otherwise
+     */
     @Override
     public boolean hasNext() {
         return (this.timer1.hasNext() && this.timer2.hasNext());
     }
 
+    /**
+     * <p>Return the sum of the two {@link Timer} used to create the {@link MergedTimer}</p>
+     *
+     * @return the next Integer of the {@link MergedTimer}
+     */
     @Override
     public Integer next() {
         if (this.hasNext()) {

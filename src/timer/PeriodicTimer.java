@@ -27,7 +27,7 @@ public class PeriodicTimer implements Timer {
      */
     private RandomTimer moreOrLess = null;
 
-    // ===== Constructor =====
+
 
     public PeriodicTimer(int at) {
         this.period = at;

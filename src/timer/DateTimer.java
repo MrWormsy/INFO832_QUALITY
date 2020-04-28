@@ -53,6 +53,8 @@ public class DateTimer implements Timer {
 
     /**
      * <p>Check if the the iterator has a next value to return</p>
+     *
+     * @return true if the iterator has a next value, false otherwise
      */
     @Override
     public boolean hasNext() {
@@ -61,6 +63,8 @@ public class DateTimer implements Timer {
 
     /**
      * <p>Return the next value of the iterator</p>
+     *
+     * @return the next value of the {@link DateTimer} (can be null)
      */
     @Override
     public Integer next() {
