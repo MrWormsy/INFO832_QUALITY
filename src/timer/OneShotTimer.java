@@ -1,10 +1,25 @@
 package timer;
 
+/**
+ * OneShotTimer will be used to TODO
+ *
+ * OneShotTimer implements {@link Timer}
+ * @author Antonin ROSA-MARTIN
+ *
+ */
+
 public class OneShotTimer implements Timer {
 
     // ===== Variables =====
 
+    /**
+     * Integer used to get the time when the {@link OneShotTimer} has been initialized
+     */
     private Integer at;
+
+    /**
+     * boolean used for the has next method (to be used only once)
+     */
     private boolean hasNext;
 
     // ===== Constructor =====

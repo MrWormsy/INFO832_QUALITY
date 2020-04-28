@@ -1,15 +1,43 @@
 package timer;
 
+/**
+ * TimeBoundedTimer will be used to TODO
+ *
+ * TimeBoundedTimer implements {@link Timer}
+ * @author Antonin ROSA-MARTIN
+ *
+ */
+
 public class TimeBoundedTimer implements Timer {
 
     // ===== Variables =====
 
+    // Humm I dont understand here TODO
     private Timer timer2bound;
+
+    /**
+     * Start time of the {@link TimeBoundedTimer}
+     */
     private Integer startTime;
+
+    /**
+     * Stop time of the {@link TimeBoundedTimer}
+     */
     private Integer stopTime;
 
+    /**
+     * Next Integer of the {@link TimeBoundedTimer}
+     */
     private Integer next = 0;
+
+    /**
+     * Current time of the {@link TimeBoundedTimer}
+     */
     private int time = 0;
+
+    /**
+     * boolean to know if the {@link TimeBoundedTimer} has a next value
+     */
     private boolean hasNext;
 
     // ===== Constructors =====

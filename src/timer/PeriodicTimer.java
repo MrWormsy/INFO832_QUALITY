@@ -1,11 +1,30 @@
 package timer;
 
+/**
+ * PeriodicTimer will be used to TODO
+ *
+ * PeriodicTimer implements {@link Timer}
+ * @author Antonin ROSA-MARTIN
+ *
+ */
+
 public class PeriodicTimer implements Timer {
 
     // ===== Variables =====
 
+    /**
+     * Integer used for the period of the {@link PeriodicTimer}
+     */
     private int period;
+
+    /**
+     * Integer used as the next return value of the {@link PeriodicTimer}
+     */
     private int next;
+
+    /**
+     * {@link RandomTimer} used to TODO
+     */
     private RandomTimer moreOrLess = null;
 
     // ===== Constructor =====

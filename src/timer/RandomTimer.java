@@ -3,9 +3,12 @@ package timer;
 import java.util.Random;
 
 /**
- * @author Flavien Vernier
+ * RandomTimer will be used to TODO
+ *
+ * RandomTimer implements {@link Timer}
+ * @author Antonin ROSA-MARTIN
+ *
  */
-
 public class RandomTimer implements Timer {
 
     // ===== Variables =====
@@ -168,12 +171,25 @@ public class RandomTimer implements Timer {
     }
 }
 
+/**
+ * IncorrectDistributionException is an exception thrown when the RandomDistribution is incorrect.
+ *
+ * @author Antonin ROSA-MARTIN
+ *
+ */
 class IncorrectDistributionException extends Exception {
     public IncorrectDistributionException(String errorMessage) {
         super(errorMessage);
     }
 }
 
+
+/**
+ * RandomDistribution will be used to determine the kind of distribution model we will be using.
+ *
+ * @author Antonin ROSA-MARTIN
+ *
+ */
 enum RandomDistribution {
     POISSON, EXP, UNIFORM, GAUSSIAN;
 }
