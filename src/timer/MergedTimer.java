@@ -2,13 +2,19 @@ package timer;
 
 public class MergedTimer implements Timer {
 
+    // ===== Variables =====
+
     private Timer timer1;
     private Timer timer2;
+
+    // ===== Constructor =====
 
     public MergedTimer(Timer timer1, Timer timer2) {
         this.timer1 = timer1;
         this.timer2 = timer2;
     }
+
+    // ===== Methods =====
 
     @Override
     public boolean hasNext() {
@@ -22,5 +28,4 @@ public class MergedTimer implements Timer {
         }
         return null;
     }
-
 }

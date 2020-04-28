@@ -6,10 +6,6 @@ import java.util.Random;
  * @author Flavien Vernier
  */
 
-enum RandomDistribution {
-    POISSON, EXP, UNIFORM, GAUSSIAN;
-}
-
 public class RandomTimer implements Timer {
 
     // ===== Variables =====
@@ -176,4 +172,8 @@ class IncorrectDistributionException extends Exception {
     public IncorrectDistributionException(String errorMessage) {
         super(errorMessage);
     }
+}
+
+enum RandomDistribution {
+    POISSON, EXP, UNIFORM, GAUSSIAN;
 }

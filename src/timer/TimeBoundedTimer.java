@@ -2,6 +2,8 @@ package timer;
 
 public class TimeBoundedTimer implements Timer {
 
+    // ===== Variables =====
+
     private Timer timer2bound;
     private Integer startTime;
     private Integer stopTime;
@@ -9,6 +11,8 @@ public class TimeBoundedTimer implements Timer {
     private Integer next = 0;
     private int time = 0;
     private boolean hasNext;
+
+    // ===== Constructors =====
 
     public TimeBoundedTimer(Timer timer2bound, int startTime, int stopTime) {
         this.timer2bound = timer2bound;
@@ -23,6 +27,8 @@ public class TimeBoundedTimer implements Timer {
         this.stopTime = Integer.MAX_VALUE;
         this.init();
     }
+
+    // ===== Methods =====
 
     private void init() {
         this.next = this.timer2bound.next();

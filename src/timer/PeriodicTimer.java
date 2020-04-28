@@ -2,14 +2,20 @@ package timer;
 
 public class PeriodicTimer implements Timer {
 
+    // ===== Variables =====
+
     private int period;
     private int next;
     private RandomTimer moreOrLess = null;
+
+    // ===== Constructor =====
 
     public PeriodicTimer(int at) {
         this.period = at;
         this.next = at;
     }
+
+    // ===== Methods =====
 
     /**
      * @param at
