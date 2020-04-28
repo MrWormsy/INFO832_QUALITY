@@ -10,7 +10,7 @@ package timer;
 
 public class TimeBoundedTimer implements Timer {
 
-    // ===== Variables =====
+
 
     // Humm I dont understand here TODO
     private Timer timer2bound;
@@ -40,7 +40,7 @@ public class TimeBoundedTimer implements Timer {
      */
     private boolean hasNext;
 
-    // ===== Constructors =====
+
 
     public TimeBoundedTimer(Timer timer2bound, int startTime, int stopTime) {
         this.timer2bound = timer2bound;
@@ -56,7 +56,7 @@ public class TimeBoundedTimer implements Timer {
         this.init();
     }
 
-    // ===== Methods =====
+
 
     private void init() {
         this.next = this.timer2bound.next();

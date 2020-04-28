@@ -10,7 +10,7 @@ package timer;
 
 public class MergedTimer implements Timer {
 
-    // ===== Variables =====
+
 
     /**
      * First timer used to create a merged timer
@@ -29,7 +29,7 @@ public class MergedTimer implements Timer {
         this.timer2 = timer2;
     }
 
-    // ===== Methods =====
+
 
     @Override
     public boolean hasNext() {

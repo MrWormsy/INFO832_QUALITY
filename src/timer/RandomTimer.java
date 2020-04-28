@@ -11,7 +11,7 @@ import java.util.Random;
  */
 public class RandomTimer implements Timer {
 
-    // ===== Variables =====
+
 
     private Random random;
     private RandomDistribution distribution;
@@ -20,7 +20,7 @@ public class RandomTimer implements Timer {
     private double limitInferior;
     private double limitSuperior;
 
-    // ===== Constructors =====
+
 
     /**
      * @param param constraint
@@ -69,7 +69,7 @@ public class RandomTimer implements Timer {
         }
     }
 
-    // ===== Methods ======
+    =
 
     public String getDistributionName() {
         return this.distribution.name();

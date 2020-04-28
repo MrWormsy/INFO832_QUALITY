@@ -10,7 +10,7 @@ package timer;
 
 public class OneShotTimer implements Timer {
 
-    // ===== Variables =====
+
 
     /**
      * Integer used to get the time when the {@link OneShotTimer} has been initialized
@@ -29,7 +29,7 @@ public class OneShotTimer implements Timer {
         this.hasNext = true;
     }
 
-    // ===== Methods =====
+
 
     @Override
     public boolean hasNext() {

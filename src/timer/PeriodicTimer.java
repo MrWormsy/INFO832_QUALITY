@@ -10,7 +10,7 @@ package timer;
 
 public class PeriodicTimer implements Timer {
 
-    // ===== Variables =====
+
 
     /**
      * Integer used for the period of the {@link PeriodicTimer}
@@ -34,7 +34,7 @@ public class PeriodicTimer implements Timer {
         this.next = at;
     }
 
-    // ===== Methods =====
+
 
     /**
      * @param at

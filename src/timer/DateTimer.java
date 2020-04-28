@@ -12,8 +12,6 @@ import java.util.*;
 
 public class DateTimer implements Timer {
 
-	// ===== Variables =====
-
     /**
      * Used to get the lapsed time between the set of time
      */
@@ -24,8 +22,11 @@ public class DateTimer implements Timer {
      */
     private Iterator<Integer> iterator;
 
-	// ===== Constructors =====
-
+    /**
+     * <p>{@link DateTimer constructor with a Set<Integer> dates}</p>
+     *
+     * @param dates The set of dates you want to use to compute the time laps
+     */
     public DateTimer(Set<Integer> dates) {
         this.lapsTimes = new ArrayList<>();
         Integer last;
@@ -39,18 +40,28 @@ public class DateTimer implements Timer {
         this.iterator = this.lapsTimes.iterator();
     }
 
+    /**
+     * <p>{@link DateTimer constructor with a List<Integer> lapsTimes}</p>
+     *
+     * @param lapsTimes The list of times you want to wait
+     */
     public DateTimer(List<Integer> lapsTimes) {
         this.lapsTimes = new ArrayList<>(lapsTimes);
         this.iterator = this.lapsTimes.iterator();
     }
 
-    // ===== Methods =====
 
+    /**
+     * <p>Check if the the iterator has a next value to return</p>
+     */
     @Override
     public boolean hasNext() {
         return iterator.hasNext();
     }
 
+    /**
+     * <p>Return the next value of the iterator</p>
+     */
     @Override
     public Integer next() {
         return iterator.next();
