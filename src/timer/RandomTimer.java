@@ -11,20 +11,42 @@ import java.util.Random;
  */
 public class RandomTimer implements Timer {
 
-
-
+    /**
+     * The random object used by the timer
+     */
     private Random random;
-    private RandomDistribution distribution;
-    private double rate;
-    private double mean;
-    private double limitInferior;
-    private double limitSuperior;
-
-
 
     /**
-     * @param param constraint
-     * @throws IncorrectDistributionException
+     * The RandomDistribution enum type of the timer
+     */
+    private RandomDistribution distribution;
+
+    /**
+     * The rate of the distribution law
+     */
+    private double rate;
+
+    /**
+     * The mean of the distribution law
+     */
+    private double mean;
+
+    /**
+     * The inferior limit of the distribution law
+     */
+    private double limitInferior;
+
+    /**
+     * The superior limit of the distribution law
+     */
+    private double limitSuperior;
+
+    /**
+     * <p>Creates a Random Timer from a distribution law enum type and the parameter of this law</p>
+     *
+     * @param distribution The distribution law as an enum
+     * @param param The parameter of the distribution law
+     * @throws IncorrectDistributionException if the distribution law is not a EXP nor a POISSON law
      */
     public RandomTimer(RandomDistribution distribution, double param) throws IncorrectDistributionException {
         if (distribution == RandomDistribution.EXP) {
@@ -47,8 +69,12 @@ public class RandomTimer implements Timer {
     }
 
     /**
-     * @param limitInferior and limitSuperior constraint
-     * @throws IncorrectDistributionException
+     * <p>Creates a Random Timer from a distribution law enum type and the inferior and superior limits of the law</p>
+     *
+     * @param distribution The distribution law as an enum
+     * @param limitInferior The inferior limit of the distribution law
+     * @param limitSuperior The superior limit of the distribution law
+     * @throws IncorrectDistributionException if the distribution law is not a GAUSSIAN nor a UNIFORM law or if the inferior limit is greater than the superior one
      */
     public RandomTimer(RandomDistribution distribution, int limitInferior, int limitSuperior) throws IncorrectDistributionException {
 
@@ -69,12 +95,20 @@ public class RandomTimer implements Timer {
         }
     }
 
-    =
-
+    /**
+     * <p>Get the name of the Timer's distribution</p>
+     *
+     * @return The name of the Timer's distribution
+     */
     public String getDistributionName() {
         return this.distribution.name();
     }
 
+    /**
+     * <p>Get the parameters of the Timer's distribution law as a string</p>
+     *
+     * @return The parameters of the Timer's distribution law
+     */
     public String getDistributionParams() {
         if (this.distribution == RandomDistribution.EXP) {
             return "rate: " + this.rate;
@@ -86,11 +120,16 @@ public class RandomTimer implements Timer {
         return "null";
     }
 
+    /**
+     * <p>Get the mean of the Timer's distribution law</p>
+     *
+     * @return The mean of the Timer's distribution law
+     */
     public double getMean() {
         return this.mean;
     }
 
-    /**
+    /** TODO
      * Give good mean
      * Give wrong variance
      */
@@ -98,7 +137,7 @@ public class RandomTimer implements Timer {
         return (int) (this.random.nextInt((int) ((this.limitSuperior - this.limitInferior) + 1)) + this.limitInferior);
     }
 
-    /**
+    /** TODO
      * Give good mean
      * Give wrong variance
      */
@@ -106,7 +145,7 @@ public class RandomTimer implements Timer {
         return (int) (-Math.log(1.0 - this.random.nextDouble()) / this.rate);
     }
 
-    /**
+    /** TODO
      * Give good mean
      * Give good variance
      */
@@ -122,17 +161,29 @@ public class RandomTimer implements Timer {
         return k - 1;
     }
 
+    /**
+     * <p>Get the next Gaussian value of Timer</p>
+     *
+     * @return the next Gaussian value of the Timer
+     */
     private int nextTimeGaussian() {
         return (int) this.limitInferior + (int) ((this.random.nextGaussian() + 1.0) / 2.0 * (this.limitSuperior - this.limitInferior));
     }
 
+    /**
+     * <p>Know if the Timer has a next value</p>
+     *
+     * @return always true
+     */
     @Override
     public boolean hasNext() {
         return true;
     }
 
-    /* (non-Javadoc)
-     * @see methodInvocator.Timer#next()
+    /**
+     * <p>Get the next value of the Timer depending of the distribution law</p>
+     *
+     * @return the next value of the Timer
      */
     @Override
     public Integer next() {
@@ -146,9 +197,14 @@ public class RandomTimer implements Timer {
             case GAUSSIAN:
                 return this.nextTimeGaussian();
         }
-        return -1; // Theoretically impossible !!!
+        return -1; // Theoretically impossible !!! TODO I think we can beat this "theoretically impossible" case ;)
     }
 
+    /**
+     * <p>Return the Timer as a String</p>
+     *
+     * @return The formatted String of the Timer
+     */
     @Override
     public String toString() {
         String stringToReturn = this.getDistributionName();
@@ -178,6 +234,12 @@ public class RandomTimer implements Timer {
  *
  */
 class IncorrectDistributionException extends Exception {
+
+    /**
+     * <p>Create a IncorrectDistributionException with a custom message</p>
+     *
+     * @param errorMessage The custom message we want to fire
+     */
     public IncorrectDistributionException(String errorMessage) {
         super(errorMessage);
     }
