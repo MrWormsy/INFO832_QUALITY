@@ -20,13 +20,11 @@ class DateTimerTest {
         DateTimer emptyLapsTime = new DateTimer(new ArrayList<>());
         Assertions.assertFalse(emptyLapsTime.hasNext());
 
-        // If i put a null List value in the constructor we should get an exception
-        // DateTimer dateTimerFromNullList = new DateTimer((List<Integer>) null);
-        // Assertions.assertFalse(dateTimerFromNullList.hasNext());
+        // If i put a null List value in the constructor we should get null pointer exception
+        assertThrows(NullPointerException.class, () -> new DateTimer((List<Integer>) null));
 
-        // If i put a null Set value in the constructor we should get an exception
-        // DateTimer dateTimerFromNullSet = new DateTimer((Set<Integer>) null);
-        // Assertions.assertFalse(dateTimerFromNullSet.hasNext());
+        // If i put a null Set value in the constructor we should get null pointer exception
+        assertThrows(NullPointerException.class, () -> new DateTimer((Set<Integer>) null));
 
 
         // Here we create a dummy set of dates to know if the has next method works
