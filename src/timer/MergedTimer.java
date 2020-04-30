@@ -10,8 +10,6 @@ package timer;
 
 public class MergedTimer implements Timer {
 
-
-
     /**
      * First timer used to create a merged timer
      */
@@ -27,8 +25,16 @@ public class MergedTimer implements Timer {
      *
      * @param timer1 The first timer to merge
      * @param timer2 The second timer to merge
+     *
+     * @throws NullPointerException if at least one of the timer is null
      */
-    public MergedTimer(Timer timer1, Timer timer2) {
+    public MergedTimer(Timer timer1, Timer timer2) throws NullPointerException {
+
+        // If at least one of the timer is null we throw a NullPointerException because we cannot merge a timer and a null object
+        if (timer1 == null || timer2 == null) {
+            throw new NullPointerException("A timer cannot be null");
+        }
+
         this.timer1 = timer1;
         this.timer2 = timer2;
     }

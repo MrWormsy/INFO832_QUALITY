@@ -1,7 +1,5 @@
 package timer;
 
-import org.junit.jupiter.api.Assertions;
-
 import java.lang.reflect.Executable;
 import java.util.*;
 
@@ -14,11 +12,11 @@ class DateTimerTest {
 
         // I create a new DateTimer with an empty set of Integer and we should get false as there is no next value
         DateTimer emptyDates = new DateTimer(new TreeSet<>());
-        Assertions.assertFalse(emptyDates.hasNext());
+        assertFalse(emptyDates.hasNext());
 
         // I create a new DateTimer with an empty set of Integer and we should get false as there is no next value
         DateTimer emptyLapsTime = new DateTimer(new ArrayList<>());
-        Assertions.assertFalse(emptyLapsTime.hasNext());
+        assertFalse(emptyLapsTime.hasNext());
 
         // If i put a null List value in the constructor we should get null pointer exception
         assertThrows(NullPointerException.class, () -> new DateTimer((List<Integer>) null));
@@ -36,12 +34,12 @@ class DateTimerTest {
 
         // We need to get the size of treeSet of true hasNext assertions
         for (int i = 0; i < treeSet.size(); i++) {
-            Assertions.assertTrue(dateTimerWithSet.hasNext());
+            assertTrue(dateTimerWithSet.hasNext());
             dateTimerWithSet.next();
         }
 
         // And as there is no next value next this is Assert needs to be false
-        Assertions.assertFalse(dateTimerWithSet.hasNext());
+        assertFalse(dateTimerWithSet.hasNext());
 
         // Here we create a dummy set of dates to know if the has next method works
         List<Integer> arrayList = new ArrayList<>();
@@ -52,11 +50,11 @@ class DateTimerTest {
 
         // We need to get the size of arrayList of true hasNext assertions
         for (int i = 0; i < arrayList.size(); i++) {
-            Assertions.assertTrue(dateTimerWithList.hasNext());
+            assertTrue(dateTimerWithList.hasNext());
             dateTimerWithList.next();
         }
         // And as there is no next value next this is Assert needs to be false
-        Assertions.assertFalse(dateTimerWithList.hasNext());
+        assertFalse(dateTimerWithList.hasNext());
     }
 
     @org.junit.jupiter.api.Test
@@ -79,7 +77,7 @@ class DateTimerTest {
 
         // As we provided an Array list the next values must be respectively 1, 2 and 3
         for (int i = 0; i < arrayList.size(); i++) {
-            Assertions.assertEquals(arrayList.get(i), dateTimerWithList.next());
+            assertEquals(arrayList.get(i), dateTimerWithList.next());
         }
 
         // We check that the next value throws an exception if there is no more values
@@ -95,7 +93,7 @@ class DateTimerTest {
         // As the treeSet has as values stepped by 1 we should always get 1 as the next value because the DateTimer will have an iterator of the n+1 value minus the n one
         // And thus we should get one as 1-0 = 1, 2-1 = 1 & 3-2 = 1
         for (int i = 0; i < treeSet.size(); i++) {
-            Assertions.assertEquals(1, dateTimerWithSet.next());
+            assertEquals(1, dateTimerWithSet.next());
         }
 
         // We check that the next value throws an exception if there is no more values
