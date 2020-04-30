@@ -9,8 +9,6 @@ package timer;
  */
 public class PeriodicTimer implements Timer {
 
-
-
     /**
      * Integer used for the period of the {@link PeriodicTimer}
      */
