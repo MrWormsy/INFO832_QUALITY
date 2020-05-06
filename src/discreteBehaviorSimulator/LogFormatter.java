@@ -11,7 +11,11 @@ import java.util.logging.LogRecord;
  *
  */
 public class LogFormatter  extends Formatter {
-	
+
+	/**
+	 * @param rec
+	 * @return
+	 */
 	public String format(LogRecord rec) {
 		StringBuffer buf = new StringBuffer();
 		
@@ -24,7 +28,12 @@ public class LogFormatter  extends Formatter {
 		
 		return buf.toString();
 	}
-	
+
+	/**
+	 * transform timestamp into a more meaningful string date
+	 * @param millisecs
+	 * @return
+	 */
 	private String calcDate(long millisecs) {
 	    SimpleDateFormat date_format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SS");
 	    Date resultdate = new Date(millisecs);

@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6149f4b-d5c2-49e4-aa6a-a830679a129c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/rSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML Top-Level Before.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML action Before.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML discreteBehaviorSimulator Before.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UML timer Before.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action/DiscreteAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/action/DiscreteAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action/DiscreteActionDependent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/action/DiscreteActionDependent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/action/DiscreteActionOnOffDependent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/action/DiscreteActionOnOffDependent.java" afterDir="false" />
+    <list default="true" id="b6149f4b-d5c2-49e4-aa6a-a830679a129c" name="Default Changelist" comment="Add javadoc to action package">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/discreteBehaviorSimulator/DiscreteActionSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/discreteBehaviorSimulator/DiscreteActionSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/discreteBehaviorSimulator/LogFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/discreteBehaviorSimulator/LogFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,8 +78,18 @@
       <workItem from="1587112287622" duration="86000" />
       <workItem from="1587112380158" duration="665000" />
       <workItem from="1587124126809" duration="765000" />
-      <workItem from="1588747242090" duration="3402000" />
+      <workItem from="1588747242090" duration="4135000" />
+      <workItem from="1588752136544" duration="71000" />
+      <workItem from="1588752455933" duration="1553000" />
     </task>
+    <task id="LOCAL-00001" summary="Add javadoc to action package">
+      <created>1588751422414</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588751422414</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -99,8 +100,14 @@
       <path value="$PROJECT_DIR$" />
       <path value="$PROJECT_DIR$/INFO832_QUALITY" />
     </ignored-roots>
+    <MESSAGE value="Add javadoc to action package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add javadoc to action package" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2440" y="115" key="CommitChangelistDialog2" timestamp="1588752578349">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2440" y="115" key="CommitChangelistDialog2/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588752578349" />
     <state x="2660" y="247" key="FileChooserDialogImpl" timestamp="1587134608503">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -109,10 +116,14 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2360" y="95" key="SettingsEditor/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588749921636" />
-    <state x="2400" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1587124158441">
+    <state x="2472" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588751424438">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2400" y="269" key="com.intellij.ide.util.TipDialog/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587124158441" />
+    <state x="2472" y="254" key="Vcs.Push.Dialog.v2/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588751424438" />
+    <state x="2400" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1588752457368">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2400" y="269" key="com.intellij.ide.util.TipDialog/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588752457368" />
     <state x="367" y="186" key="com.intellij.ide.util.TipDialog/63.0.1217.720/1920.0.1920.1040@63.0.1217.720" timestamp="1586931370712" />
     <state x="2689" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588749632157">
       <screen x="1920" y="0" width="1920" height="1040" />
