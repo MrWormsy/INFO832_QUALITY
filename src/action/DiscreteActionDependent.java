@@ -32,11 +32,19 @@ public class DiscreteActionDependent implements DiscreteActionInterface {
 		this.it = this.depedentActions.iterator();
 		this.currentAction = this.baseAction;
 	}
-	
+
+	/**
+	 * @param o
+	 * @param depentMethodName
+	 * @param timerDependence
+	 */
 	public void addDependence(Object o, String depentMethodName, Timer timerDependence) {
 		this.depedentActions.add(new DiscreteAction(o, depentMethodName, timerDependence));
 	}
-	
+
+	/**
+	 *
+	 */
 	/*private void dates2Timalapse(TreeSet<Integer> datesOn, TreeSet<Integer> datesOff, Vector<Integer> timeLapseOn, Vector<Integer> timeLapseOff) {
 		Vector<Integer> currentTimeLapse;
 		TreeSet<Integer> currentDates;

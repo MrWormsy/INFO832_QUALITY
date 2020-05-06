@@ -44,7 +44,13 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		this.currentAction = this.offAction;
 		this.currentLapsTime = 0;
 	}
-	
+
+	/**
+	 * @param datesOn
+	 * @param datesOff
+	 * @param timeLapseOn
+	 * @param timeLapseOff
+	 */
 	private void dates2Timalapse(TreeSet<Integer> datesOn, TreeSet<Integer> datesOff, Vector<Integer> timeLapseOn, Vector<Integer> timeLapseOff) {
 		Vector<Integer> currentTimeLapse;
 		TreeSet<Integer> currentDates;
@@ -76,7 +82,14 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		}
 		
 	}
-	
+
+	/**
+	 * @param o
+	 * @param on
+	 * @param datesOn
+	 * @param off
+	 * @param datesOff
+	 */
 	public DiscreteActionOnOffDependent(Object o, String on, TreeSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
 		/*Vector<Integer> timeLapseOn = new Vector<Integer>();
 		Vector<Integer> timeLapseOff = new Vector<Integer>();
@@ -95,6 +108,10 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		}
 	}
 
+	/**
+	 * If there is an action you finish it and go on the next one
+	 * If not go directly onto the next one
+	 */
 	public void nextAction(){
 		if (this.currentAction == this.onAction){
 			this.currentAction = this.offAction;
