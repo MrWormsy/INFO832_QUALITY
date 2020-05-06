@@ -24,7 +24,7 @@ public class DiscreteAction implements DiscreteActionInterface {
 
 	// Constructor
 	
-	private DiscreteAction() {
+	public DiscreteAction() {
 		// Start logger
 			this.logger = Logger.getLogger("DAS");
 			//this.logger = Logger.getLogger("APP");
