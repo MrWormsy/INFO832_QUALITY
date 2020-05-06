@@ -1,18 +1,18 @@
 package timer;
 
 /**
- * TimeBoundedTimer will be used to TODO
+ * TimeBoundedTimer will be used to create a Timer that can only be used between a certain amount of time (the startTime and the stopTime).
+ * The first returned next value is only between the start time and the stop time, and the other time it is the next value of the Timer used to create this TimeBoundedTimer
  *
  * TimeBoundedTimer implements {@link Timer}
  * @author Antonin ROSA-MARTIN
  *
  */
-
 public class TimeBoundedTimer implements Timer {
 
-
-
-    // Humm I dont understand here TODO
+    /**
+     * The timer to bound to this {@link TimeBoundedTimer}
+     */
     private Timer timerToBound;
 
     /**
@@ -41,7 +41,7 @@ public class TimeBoundedTimer implements Timer {
     private boolean hasNext;
 
     /**
-     * <p>Bounds an existing timer with a start and stop time</p>
+     * <p>Bounds an existing timer with a start and stop time, where the first next value is between the Stop and Start time</p>
      *
      * @param timerToBound The Timer to bound
      * @param startTime The start time of the {@link TimeBoundedTimer}
@@ -55,12 +55,11 @@ public class TimeBoundedTimer implements Timer {
     }
 
     /**
-     * <p>Bounds an existing timer with a start time and the stop time will be infinite</p>
+     * <p>Bounds an existing timer with a start time and the stop time will be infinite, where the first next value is between the Stop and Start time</p>
      *
      * @param timerToBound The Timer to bound
      * @param startTime The start time of the {@link TimeBoundedTimer}
      */
-    // TODO Hum there might be a problem here no ? As the stop will be infinite
     public TimeBoundedTimer(Timer timerToBound, int startTime) {
         this.timerToBound = timerToBound;
         this.startTime = startTime;
@@ -69,22 +68,45 @@ public class TimeBoundedTimer implements Timer {
     }
 
     /**
-     * <p>Init the {@link TimeBoundedTimer} to know the next value as well as if it will have a next value</p>
+     * <p>Init the {@link TimeBoundedTimer} to know the first next value of the Timer as well as if it will have a next value</p>
      */
-    // Here there will be some nasty null pointer exceptions...
     private void init() {
-        this.next = this.timerToBound.next();
 
-        // TODO ISSUE HERE
-        // This will be infinite if the stop time is infinite
-        while (this.next < this.startTime) {
-            this.next += this.timerToBound.next();
+        // We need to check that if the timerToBound of this Timer has a null return value, otherwise we throw a NullPointerException
+        Integer nextValue = this.timerToBound.next();
+        if (nextValue == null) {
+
+            // To safely throw this exception we need to set hasNext() to false and the next value to null
+            this.hasNext = false;
+            this.next = null;
+
+            throw new NullPointerException("The timerToBound does not have a return value");
         }
 
+        this.next = this.timerToBound.next();
+
+        while (this.next < this.startTime) {
+            nextValue = this.timerToBound.next();
+
+            // If the next value is null we need to throw a NullPointerException as we can not use this next value
+            if (nextValue == null) {
+
+                // To safely throw this exception we need to set hasNext() to false and the next value to null
+                this.hasNext = false;
+                this.next = null;
+
+                throw new NullPointerException("The timerToBound does not have a return value");
+            }
+
+            this.next += nextValue;
+        }
+
+        // If the next value is less than the stop time we can return a next value, otherwise hasNext() will be false AND the next value must be null
         if (this.next < this.stopTime) {
             this.hasNext = true;
         } else {
             this.hasNext = false;
+            this.next = null;
         }
     }
 
@@ -98,6 +120,9 @@ public class TimeBoundedTimer implements Timer {
         return this.hasNext;
     }
 
+    // TODO JE DEVIENS FOU ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // TODO JE COMPRENDS PAS A QUOI CA SERT !!!!!!!!!!!!
+
     /**
      * <p>Returns the next value of the Timer and update the future next value</p>
      *
@@ -107,13 +132,63 @@ public class TimeBoundedTimer implements Timer {
     public Integer next() {
         Integer previousNext = this.next;
         this.time += this.next;
+
         if (this.time < this.stopTime) {
             this.next = this.timerToBound.next();
         } else {
-            previousNext = null;
+            // Here this is not previousNext but this.next otherwise there will be a NullPointerException and the null value if for the next method call
+            this.next = null;
             this.hasNext = false;
         }
         return previousNext;
     }
 
+    // Getters and Setters
+    public Timer getTimerToBound() {
+        return timerToBound;
+    }
+
+    public void setTimerToBound(Timer timerToBound) {
+        this.timerToBound = timerToBound;
+    }
+
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
+    }
+
+    public Integer getStopTime() {
+        return stopTime;
+    }
+
+    public void setStopTime(Integer stopTime) {
+        this.stopTime = stopTime;
+    }
+
+    public Integer getNext() {
+        return next;
+    }
+
+    public void setNext(Integer next) {
+        this.next = next;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public boolean isHasNext() {
+        return hasNext;
+    }
+
+    public void setHasNext(boolean hasNext) {
+        this.hasNext = hasNext;
+    }
 }

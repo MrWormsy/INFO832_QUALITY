@@ -42,7 +42,7 @@ public class RandomTimer implements Timer {
     private double limitSuperior;
 
     /**
-     * <p>Creates a Random Timer from a distribution law enum type and the parameter of this law</p>
+     * <p>Creates a Random Timer from a distribution law enum type (either EXP or POISSON) and the parameter of this law</p>
      *
      * @param distribution The distribution law as an enum
      * @param param The parameter of the distribution law
@@ -69,7 +69,7 @@ public class RandomTimer implements Timer {
     }
 
     /**
-     * <p>Creates a Random Timer from a distribution law enum type and the inferior and superior limits of the law</p>
+     * <p>Creates a Random Timer from a distribution law enum type (either GAUSSIAN or UNIFORM) and the inferior and superior limits of the law</p>
      *
      * @param distribution The distribution law as an enum
      * @param limitInferior The inferior limit of the distribution law
