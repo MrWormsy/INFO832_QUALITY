@@ -76,7 +76,7 @@ public class RandomTimer implements Timer {
      * @param limitSuperior The superior limit of the distribution law
      * @throws IncorrectDistributionException if the distribution law is not a GAUSSIAN nor a UNIFORM law or if the inferior limit is greater than the superior one
      */
-    public RandomTimer(RandomDistribution distribution, int limitInferior, int limitSuperior) throws IncorrectDistributionException {
+    public RandomTimer(RandomDistribution distribution, double limitInferior, double limitSuperior) throws IncorrectDistributionException {
 
         // If the inferior limit is greater than the limit superior there is an error
         if (limitInferior > limitSuperior) {
@@ -167,7 +167,29 @@ public class RandomTimer implements Timer {
      * @return the next Gaussian value of the Timer
      */
     private int nextTimeGaussian() {
-        return (int) this.limitInferior + (int) ((this.random.nextGaussian() + 1.0) / 2.0 * (this.limitSuperior - this.limitInferior));
+        // Here it will be a little tricky as we will use the already given nextGaussian() and apply this with the limits
+        int valueToReturn = 0;
+        double gaussianValue;
+        double randomDoubleBetweenBounds;
+
+        do {
+            // We get a gaussian value
+            gaussianValue = (Math.pow(Math.exp(1), -(Math.pow(this.random.nextFloat() - this.getMean(), 2)) / 2.0)) / (Math.sqrt(2 * Math.PI));
+
+            System.out.println(gaussianValue);
+
+            return valueToReturn;
+
+            // We return only if the value is in the bounds
+            //if (this.limitInferior <= valueToReturn && valueToReturn <= this.limitSuperior) {
+            //    return valueToReturn;
+            //}
+
+        } while (true);
+
+        //return (int)this.limitInferior + (int)((this.random.nextGaussian() + 1.0)/2.0 * (this.limitSuperior - this.limitInferior));
+
+        //return (int) this.limitInferior + (int) ((this.random.nextFloat() + 1.0) / 2.0 * (this.limitSuperior - this.limitInferior));
     }
 
     /**
@@ -210,20 +232,64 @@ public class RandomTimer implements Timer {
         String stringToReturn = this.getDistributionName();
         switch (this.distribution) {
             case UNIFORM:
-                stringToReturn += " Inferior limit:" + this.limitInferior + " Superior limit:" + this.limitSuperior;
+                stringToReturn += " Inferior limit: " + this.limitInferior + " Superior limit: " + this.limitSuperior;
                 break;
             case POISSON:
-                stringToReturn += " mean:" + this.mean;
+                stringToReturn += " mean: " + this.mean;
                 break;
             case EXP:
-                stringToReturn += " rate:" + this.rate;
+                stringToReturn += " rate: " + this.rate;
                 break;
             case GAUSSIAN:
-                stringToReturn += " Inferior limit:" + this.limitInferior + " Superior limit:" + this.limitSuperior;
+                stringToReturn += " Inferior limit: " + this.limitInferior + " Superior limit: " + this.limitSuperior;
                 break;
         }
 
         return stringToReturn;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public RandomDistribution getDistribution() {
+        return distribution;
+    }
+
+    public void setDistribution(RandomDistribution distribution) {
+        this.distribution = distribution;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public void setMean(double mean) {
+        this.mean = mean;
+    }
+
+    public double getLimitInferior() {
+        return limitInferior;
+    }
+
+    public void setLimitInferior(double limitInferior) {
+        this.limitInferior = limitInferior;
+    }
+
+    public double getLimitSuperior() {
+        return limitSuperior;
+    }
+
+    public void setLimitSuperior(double limitSuperior) {
+        this.limitSuperior = limitSuperior;
     }
 }
 
