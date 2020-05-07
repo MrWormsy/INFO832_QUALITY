@@ -61,4 +61,20 @@ public class MergedTimer implements Timer {
         }
         return null;
     }
+
+    public Timer getTimer1() {
+        return timer1;
+    }
+
+    public void setTimer1(Timer timer1) {
+        this.timer1 = timer1;
+    }
+
+    public Timer getTimer2() {
+        return timer2;
+    }
+
+    public void setTimer2(Timer timer2) {
+        this.timer2 = timer2;
+    }
 }

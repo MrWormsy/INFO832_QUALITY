@@ -2,6 +2,9 @@ package timer;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RandomTimerTest {
@@ -108,6 +111,15 @@ class RandomTimerTest {
     // Not need to test hasNext() as it returns always true
     @Test
     void hasNext() {
+        try {
+            double limitInferior = -1.0;
+            double limitSuperior = 1.0;
+            RandomTimer randomTimerUNIFORM = new RandomTimer(RandomDistribution.UNIFORM, limitInferior,limitSuperior);
+
+            assertTrue(randomTimerUNIFORM.hasNext());
+        } catch (IncorrectDistributionException e) {
+            e.printStackTrace();
+        }
     }
 
     // Here we want to know if the law is working, we will simulate 100 000 next appeals and we will compare it to the mean of the law to know if the law is working (with a minor error of 1%)
@@ -170,8 +182,8 @@ class RandomTimerTest {
 
         // Create a RandomTimer of a gaussian law
         try {
-            double limitInferior = -1000.0;
-            double limitSuperior = 1000.0;
+            double limitInferior = -10000.0;
+            double limitSuperior = 10000.0;
             RandomTimer randomTimerGAUSSIAN = new RandomTimer(RandomDistribution.GAUSSIAN, limitInferior, limitSuperior);
 
             int total = 0;
@@ -181,29 +193,40 @@ class RandomTimerTest {
 
                 currentNext = randomTimerGAUSSIAN.next();
 
-                // We check that this value is between the min and the max values it can go through
-                assertTrue(randomTimerGAUSSIAN.getLimitInferior() <= currentNext && currentNext <= randomTimerGAUSSIAN.getLimitSuperior());
+                // Here we cannot test if the value is between two bounds as a gaussian value can be everywhere between Double.MIN_VALUE and Double.MAX_VALUE (negative infinity and positive infinity)
 
                 // And we add this value to the sum
                 total += currentNext;
             }
 
-            System.out.println(total / numberIterations);
-            System.out.println(randomTimerGAUSSIAN.getMean());
-
             // Here we check that the sum / numberIterations is nearly equal to the mean with a 1% risk
-            assertEquals(randomTimerGAUSSIAN.getMean(), (total * 1.0) / (numberIterations * 1.0), 0.01 * randomTimerGAUSSIAN.getMean());
+            assertEquals(randomTimerGAUSSIAN.getMean(), (total * 1.0) / (numberIterations * 1.0), 0.01 * randomTimerGAUSSIAN.getLimitSuperior());
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();
         }
 
         // Create a RandomTimer of a uniform law
         try {
-            double limitInferior = -1.0;
-            double limitSuperior = 1.0;
+            double limitInferior = -100.0;
+            double limitSuperior = 100.0;
             RandomTimer randomTimerUNIFORM = new RandomTimer(RandomDistribution.UNIFORM, limitInferior,limitSuperior);
 
-            assertEquals((limitSuperior + limitInferior) / 2.0, randomTimerUNIFORM.getMean());
+            int total = 0;
+            Integer currentNext;
+
+            for (int i = 0; i < numberIterations; i++) {
+
+                currentNext = randomTimerUNIFORM.next();
+
+                // Here we cannot test if the value is between two bounds as a gaussian value can be everywhere between Double.MIN_VALUE and Double.MAX_VALUE (negative infinity and positive infinity)
+
+                // And we add this value to the sum
+                total += currentNext;
+            }
+
+            // Here we check that the sum / numberIterations is nearly equal to the mean with a 1% risk
+            assertEquals(randomTimerUNIFORM.getMean(), (total * 1.0) / (numberIterations * 1.0), 0.01 * randomTimerUNIFORM.getLimitSuperior());
+
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();
         }
@@ -259,6 +282,5 @@ class RandomTimerTest {
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();
         }
-
     }
 }

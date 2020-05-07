@@ -52,4 +52,20 @@ public class OneShotTimer implements Timer {
         this.hasNext = false;
         return next;
     }
+
+    public Integer getAt() {
+        return at;
+    }
+
+    public void setAt(Integer at) {
+        this.at = at;
+    }
+
+    public boolean isHasNext() {
+        return hasNext;
+    }
+
+    public void setHasNext(boolean hasNext) {
+        this.hasNext = hasNext;
+    }
 }

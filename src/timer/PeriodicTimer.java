@@ -81,7 +81,6 @@ public class PeriodicTimer implements Timer {
         return this.period;
     }
 
-
     /**
      * <p>Returns the value of the {@link PeriodicTimer}</p>
      *
@@ -109,6 +108,26 @@ public class PeriodicTimer implements Timer {
     @Override
     public boolean hasNext() {
         return true;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
+    }
+
+    public int getNext() {
+        return next;
+    }
+
+    public void setNext(int next) {
+        this.next = next;
+    }
+
+    public RandomTimer getMoreOrLess() {
+        return moreOrLess;
+    }
+
+    public void setMoreOrLess(RandomTimer moreOrLess) {
+        this.moreOrLess = moreOrLess;
     }
 
 }
