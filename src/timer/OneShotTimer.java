@@ -52,26 +52,4 @@ public class OneShotTimer implements Timer {
         this.hasNext = false;
         return next;
     }
-
-    /**
-     * @return the value of the next value (without triggering next)
-     */
-    public Integer getAt() {
-        return at;
-    }
-
-    /**
-     * Set the at value of the OneShotTimer
-     */
-    public void setAt(Integer at) {
-        this.at = at;
-    }
-
-    public boolean isHasNext() {
-        return hasNext;
-    }
-
-    public void setHasNext(boolean hasNext) {
-        this.hasNext = hasNext;
-    }
 }
