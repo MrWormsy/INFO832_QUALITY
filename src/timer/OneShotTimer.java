@@ -53,10 +53,16 @@ public class OneShotTimer implements Timer {
         return next;
     }
 
+    /**
+     * @return the value of the next value (without triggering next)
+     */
     public Integer getAt() {
         return at;
     }
 
+    /**
+     * Set the at value of the OneShotTimer
+     */
     public void setAt(Integer at) {
         this.at = at;
     }

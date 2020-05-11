@@ -71,18 +71,30 @@ public class DateTimer implements Timer {
         return iterator.next();
     }
 
+    /**
+     * @return the lapsTime ArrayList
+     */
     public ArrayList<Integer> getLapsTimes() {
         return lapsTimes;
     }
 
+    /**
+     * <p>Set the lapsTime ArrayList</p>
+     */
     public void setLapsTimes(ArrayList<Integer> lapsTimes) {
         this.lapsTimes = lapsTimes;
     }
 
+    /**
+     * @return the iterator of DateTimer
+     */
     public Iterator<Integer> getIterator() {
         return iterator;
     }
 
+    /**
+     * <p>Set the Iterator of the DateTimer</p>>
+     */
     public void setIterator(Iterator<Integer> iterator) {
         this.iterator = iterator;
     }
