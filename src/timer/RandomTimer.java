@@ -226,48 +226,16 @@ public class RandomTimer implements Timer {
         return stringToReturn;
     }
 
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
-    public RandomDistribution getDistribution() {
-        return distribution;
-    }
-
-    public void setDistribution(RandomDistribution distribution) {
-        this.distribution = distribution;
-    }
-
     public double getRate() {
         return rate;
-    }
-
-    public void setRate(double rate) {
-        this.rate = rate;
-    }
-
-    public void setMean(double mean) {
-        this.mean = mean;
     }
 
     public double getLimitInferior() {
         return limitInferior;
     }
 
-    public void setLimitInferior(double limitInferior) {
-        this.limitInferior = limitInferior;
-    }
-
     public double getLimitSuperior() {
         return limitSuperior;
-    }
-
-    public void setLimitSuperior(double limitSuperior) {
-        this.limitSuperior = limitSuperior;
     }
 }
 

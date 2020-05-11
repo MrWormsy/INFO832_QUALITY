@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RandomTimerTest {
 
-    // Get the parameters of the RandomTimer as a String
+    // Get the parameters of the RandomTimer as a  String
     @Test
     void getDistributionParams() {
 
@@ -108,7 +108,7 @@ class RandomTimerTest {
         }
     }
 
-    // Not need to test hasNext() as it returns always true
+    // Not need to test hasNext() as it returns always true (to show it we will call hasNext() 100 times)
     @Test
     void hasNext() {
         try {
@@ -116,10 +116,22 @@ class RandomTimerTest {
             double limitSuperior = 1.0;
             RandomTimer randomTimerUNIFORM = new RandomTimer(RandomDistribution.UNIFORM, limitInferior,limitSuperior);
 
-            assertTrue(randomTimerUNIFORM.hasNext());
+            for (int i = 0; i < 100; i++) {
+                assertTrue(randomTimerUNIFORM.hasNext());
+            }
+
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();
         }
+
+        // Then we will create a RandomTimer with the wrong arguments for the distribution and this will throw an IncorrectDistributionException
+        assertThrows(IncorrectDistributionException.class, () -> new RandomTimer(RandomDistribution.UNIFORM, 1));
+
+        assertThrows(IncorrectDistributionException.class, () -> new RandomTimer(RandomDistribution.EXP, -1, 1));
+
+        // If the user create a RandomTimer with the constructor containing the limits and that the inferior one is greater than the superior one we should throw an IncorrectDistributionException
+        assertThrows(IncorrectDistributionException.class, () -> new RandomTimer(RandomDistribution.UNIFORM, 1, -1));
+
     }
 
     // Here we want to know if the law is working, we will simulate 100 000 next appeals and we will compare it to the mean of the law to know if the law is working (with a minor error of 1%)
@@ -182,8 +194,8 @@ class RandomTimerTest {
 
         // Create a RandomTimer of a gaussian law
         try {
-            double limitInferior = -10000.0;
-            double limitSuperior = 10000.0;
+            double limitInferior = -10000;
+            double limitSuperior = 10000;
             RandomTimer randomTimerGAUSSIAN = new RandomTimer(RandomDistribution.GAUSSIAN, limitInferior, limitSuperior);
 
             int total = 0;
@@ -198,6 +210,8 @@ class RandomTimerTest {
                 // And we add this value to the sum
                 total += currentNext;
             }
+
+
 
             // Here we check that the sum / numberIterations is nearly equal to the mean with a 1% risk
             assertEquals(randomTimerGAUSSIAN.getMean(), (total * 1.0) / (numberIterations * 1.0), 0.01 * randomTimerGAUSSIAN.getLimitSuperior());
@@ -261,8 +275,8 @@ class RandomTimerTest {
 
         // Create a RandomTimer of a gaussian law
         try {
-            double limitInferior = -1.0;
-            double limitSuperior = 1.0;
+            double limitInferior = -10000.0;
+            double limitSuperior = 10000.0;
             RandomTimer randomTimerGAUSSIAN = new RandomTimer(RandomDistribution.GAUSSIAN, limitInferior,limitSuperior);
 
             // We need to get an inferior limit and a superior limit (as we got a gaussian law)

@@ -9,6 +9,24 @@ class TimeBoundedTimerTest {
     @Test
     void hasNext() {
 
+        // We want to test a dummy Timer with a null next value
+        Timer nullNextValueTimer = new Timer() {
+            @Override
+            public Integer next() {
+                return null;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return false;
+            }
+        };
+        assertThrows(NullPointerException.class, () -> new TimeBoundedTimer(nullNextValueTimer, 1));
+
+        // Here we want to test the OneShotTimer with a next value less than the start time which will fire a NullPointerException in the init method
+        OneShotTimer oneShotTimerPriorStartTime = new OneShotTimer(1);
+        assertThrows(NullPointerException.class, () -> new TimeBoundedTimer(oneShotTimerPriorStartTime, 2));
+
         OneShotTimer oneShotTimer1 = new OneShotTimer(10);
 
         TimeBoundedTimer timeBoundedTimer1 = new TimeBoundedTimer(oneShotTimer1, 5);
@@ -91,5 +109,23 @@ class TimeBoundedTimerTest {
 
         // As there is not next value if we try to get it we will get a NullPointerException
         assertThrows(NullPointerException.class, () -> timeBoundedTimer3.next());
+
+        // Now we want to create a TimeBound Timer with a Timer that has a next value greater than the stop time thus it will have a false hasNext()
+        Timer dummyTimer2 = new Timer() {
+            @Override
+            public Integer next() {
+                return 10;
+            }
+
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+        };
+
+        TimeBoundedTimer timeBoundedTimerWithValueGreaterThanStopTime = new TimeBoundedTimer(dummyTimer2, 1, 2);
+
+        assertFalse(timeBoundedTimerWithValueGreaterThanStopTime.hasNext());
+
     }
 }

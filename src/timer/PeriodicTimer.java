@@ -109,25 +109,4 @@ public class PeriodicTimer implements Timer {
     public boolean hasNext() {
         return true;
     }
-
-    public void setPeriod(int period) {
-        this.period = period;
-    }
-
-    public int getNext() {
-        return next;
-    }
-
-    public void setNext(int next) {
-        this.next = next;
-    }
-
-    public RandomTimer getMoreOrLess() {
-        return moreOrLess;
-    }
-
-    public void setMoreOrLess(RandomTimer moreOrLess) {
-        this.moreOrLess = moreOrLess;
-    }
-
 }

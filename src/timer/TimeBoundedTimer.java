@@ -83,7 +83,7 @@ public class TimeBoundedTimer implements Timer {
             throw new NullPointerException("The timerToBound does not have a return value");
         }
 
-        this.next = this.timerToBound.next();
+        this.next = nextValue;
 
         while (this.next < this.startTime) {
             nextValue = this.timerToBound.next();
@@ -141,54 +141,5 @@ public class TimeBoundedTimer implements Timer {
             this.hasNext = false;
         }
         return previousNext;
-    }
-
-    // Getters and Setters
-    public Timer getTimerToBound() {
-        return timerToBound;
-    }
-
-    public void setTimerToBound(Timer timerToBound) {
-        this.timerToBound = timerToBound;
-    }
-
-    public Integer getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Integer startTime) {
-        this.startTime = startTime;
-    }
-
-    public Integer getStopTime() {
-        return stopTime;
-    }
-
-    public void setStopTime(Integer stopTime) {
-        this.stopTime = stopTime;
-    }
-
-    public Integer getNext() {
-        return next;
-    }
-
-    public void setNext(Integer next) {
-        this.next = next;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
-    public boolean isHasNext() {
-        return hasNext;
-    }
-
-    public void setHasNext(boolean hasNext) {
-        this.hasNext = hasNext;
     }
 }
