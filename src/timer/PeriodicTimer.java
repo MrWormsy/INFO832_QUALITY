@@ -92,6 +92,8 @@ public class PeriodicTimer implements Timer {
         int previousNext = this.next;
 
         if (this.moreOrLess != null) {
+
+            // This has no sense
             this.next = this.period + (int) (this.moreOrLess.next() - this.moreOrLess.getMean());
         } else {
             this.next = this.period;

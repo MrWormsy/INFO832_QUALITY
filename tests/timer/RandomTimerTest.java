@@ -58,7 +58,6 @@ class RandomTimerTest {
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();
         }
-
     }
 
     // Get the mean of the RandomTimer

@@ -117,7 +117,9 @@ public class RandomTimer implements Timer {
         } else if (this.distribution == RandomDistribution.UNIFORM || this.distribution == RandomDistribution.GAUSSIAN) {
             return "Inferior limit: " + this.limitInferior + " Superior limit: " + this.limitSuperior;
         }
-        return "null";
+
+        // As the constructors do not let us create an other RandomTimer with an other RandomDistribution that the 4 ones, we won't return null
+        return null;
     }
 
     /**
@@ -197,7 +199,9 @@ public class RandomTimer implements Timer {
             case GAUSSIAN:
                 return this.nextTimeGaussian();
         }
-        return -1; // Theoretically impossible !!! TODO I think we can beat this "theoretically impossible" case ;)
+
+        // As the constructors do not let us create an other RandomTimer with an other RandomDistribution that the 4 ones we won't have this case happening
+        return -1;
     }
 
     /**
