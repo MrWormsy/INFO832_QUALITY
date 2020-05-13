@@ -7,7 +7,8 @@ import java.util.Set;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
- * 
+ * Singleton class representing to a Clock for measuring time.
+ * It is able to measure either real or virtual time.
  */
 public class Clock {
 	private static Clock instance = null;   // static instance of Clock singleton
@@ -32,7 +33,7 @@ public class Clock {
 	}
 	
 	/**
-	 * <p>Get the instance of the {@link Clock} singleton
+	 * <p>Get the instance of the {@link Clock} singleton</p>
 	 * @return instance of {@link Clock}
 	 */
 	public static Clock getInstance() {
@@ -59,7 +60,7 @@ public class Clock {
 	}
 	
 	/**
-	 * <p>Set {@link virtual Clock#virtual} attribute
+	 * <p>Set {@link virtual Clock#virtual} attribute</p>
 	 * @param virtual
 	 */
 	public void setVirtual(boolean virtual) {
