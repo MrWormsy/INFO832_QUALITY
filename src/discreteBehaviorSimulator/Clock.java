@@ -6,25 +6,35 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * 
+ */
 public class Clock {
 	private static Clock instance = null;
 	
-	private int time;
-	private int nextJump;
-	private ReentrantReadWriteLock lock;
-	private boolean virtual;
+	private int time;						// current time of the clock
+	private int nextJump;					// next planned time jump
+	private ReentrantReadWriteLock lock;	// lock allowing both reader and writer to reacquire read or write locks
+	private boolean virtual;				// tells if the clock is virtual or not
 	
 	
-	private Set<ClockObserver> observers;
+	private Set<ClockObserver> observers;	// container of uniques observers
 	
+	/**
+	 * Clock constructor
+	 */
 	private Clock() {
 		this.time = 0;
-		this.nextJump=0;
+		this.nextJump = 0;
 		this.lock = new ReentrantReadWriteLock();
 		this.virtual = true;
 		this.observers = new HashSet<ClockObserver>();
 	}
 	
+	/**
+	 * <p>Get the instance of the {@link Clock} singleton
+	 * @return instance of {@link Clock}
+	 */
 	public static Clock getInstance() {
 		if (Clock.instance == null) {
 			Clock.instance = new Clock();
@@ -32,26 +42,48 @@ public class Clock {
 		return Clock.instance;
 	}
 	
+	/**
+	 * <p>Add a new observer to the set</p>
+	 * @param o new observer to add
+	 */
 	public void addObserver(ClockObserver o) {
 		this.observers.add(o);
 	}
+
+	/**
+	 * <p>Remove an observer from the set
+	 * @param o observer to remove
+	 */
 	public void removeObserver(ClockObserver o) {
 		this.observers.remove(o);
 	}
 	
+	/**
+	 * <p>Set {@link virtual Clock#virtual} attribute
+	 * @param virtual
+	 */
 	public void setVirtual(boolean virtual) {
 		this.virtual = virtual;
 	}
+
+	/**
+	 * <p>Get {@link virtual Clock#virtual} attribute</p>
+	 * @return true if the clock is virtual, else false
+	 */
 	public boolean isVirtual() {
 		return this.virtual;
 	}
 	
+	/**
+	 * <p>Set the {@link nextJump Clock#nextJump} attribute
+	 */
 	public void setNextJump(int nextJump) {
 		this.nextJump = nextJump;
 		for(ClockObserver o:this.observers) {
 			o.nextClockChange(this.nextJump);
 		}
 	}
+
 	/*public void setTime(int time) throws IllegalAccessException {
 		this.lock.lock();
 		if (this.time < time) {
@@ -65,6 +97,12 @@ public class Clock {
 		}
 		this.lock.unlock();
 	}*/
+
+	/**
+	 * <p>Increase time on clock and notice this change to an observer</p>
+	 * @param time increase value
+	 * @throws Exception if provided time value is not equal to the next jump
+	 */
 	public void increase(int time) throws Exception {
 
 		this.lockWriteAccess();
@@ -78,6 +116,11 @@ public class Clock {
 		}
 		this.unlockWriteAccess();
 	}
+
+	/**
+	 * <p>Get the current {@link time Clock#time} on the clock</p>
+	 * @return current time on the clock if its virtual, else the current real time
+	 */
 	public long getTime() {
 		if(this.virtual) {
 			return this.time;
@@ -86,21 +129,37 @@ public class Clock {
 		}
 	}
 	
+	/**
+	 * <p>Lock readlock for read operations</p>
+	 */
 	public void lockReadAccess() {
 		this.lock.readLock().lock();
 	}
 	
+	/**
+	 * <p>Unlock readlock for read operations</p>
+	 */
 	public void unlockReadAccess() {
 		this.lock.readLock().unlock();
 	}
 	
+	/**
+	 * <p>Lock writeLock for write operations</p>
+	 */
 	public void lockWriteAccess() {
 		this.lock.writeLock().lock();
 	}
+
+	/**
+	 * <p>Unlock writeLock for write operation</p>
+	 */
 	public void unlockWriteAccess() {
 		this.lock.writeLock().unlock();		
 	}
 	
+	/**
+	 * <p>Convert current {@link time Clock#time} into String</p>
+	 */
 	public String toString() {
 		return ""+this.time;
 	}

@@ -7,14 +7,16 @@ import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
 /**
+ * <p>This class is used to format a log record in a more human readable way</p>
  * @author Flavien Vernier
- *
+ * @see Formatter
  */
-public class LogFormatter  extends Formatter {
+public class LogFormatter extends Formatter {
 
 	/**
-	 * @param rec
-	 * @return
+	 * <p>Constructor of class {@link LogFormatter}</p>
+	 * @param rec log record to format
+	 * @return string formated log record as a {@link StringBuffer}
 	 */
 	public String format(LogRecord rec) {
 		StringBuffer buf = new StringBuffer();
@@ -29,10 +31,8 @@ public class LogFormatter  extends Formatter {
 		return buf.toString();
 	}
 
-	/**
-	 * transform timestamp into a more meaningful string date
-	 * @param millisecs
-	 * @return
+	/*
+	 * Transform timestamp into a more meaningful string date
 	 */
 	private String calcDate(long millisecs) {
 	    SimpleDateFormat date_format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SS");
@@ -40,14 +40,18 @@ public class LogFormatter  extends Formatter {
 	    return date_format.format(resultdate);
 	  }
 
-	  // this method is called just after the handler using this
-	  // formatter is created
+	  /**
+	   * <p>Super implementation of parent class</p>
+	   * @see Formatter#getHead(Handler)
+	   */
 	  public String getHead(Handler h) {
 		  return "";
 	  }
 	  
-	// this method is called just after the handler using this
-	  // formatter is closed
+	  /**
+	   * <p>Super implementation of parent class</p>
+	   * @see Formatter#getHead(Handler)
+	   */
 	  public String getTail(Handler h) {
 	    return "";
 	  }
