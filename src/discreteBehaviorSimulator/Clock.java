@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * 
  */
 public class Clock {
-	private static Clock instance = null;
+	private static Clock instance = null;   // static instance of Clock singleton
 	
 	private int time;						// current time of the clock
 	private int nextJump;					// next planned time jump
@@ -75,7 +75,7 @@ public class Clock {
 	}
 	
 	/**
-	 * <p>Set the {@link nextJump Clock#nextJump} attribute
+	 * <p>Set the {@link nextJump Clock#nextJump} attribute</p>
 	 */
 	public void setNextJump(int nextJump) {
 		this.nextJump = nextJump;
