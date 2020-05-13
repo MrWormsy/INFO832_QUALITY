@@ -21,7 +21,7 @@ public class Clock {
 	
 	private Set<ClockObserver> observers;	// container of uniques observers
 	
-	/**
+	/*
 	 * Clock constructor
 	 */
 	private Clock() {
@@ -120,7 +120,7 @@ public class Clock {
 
 	/**
 	 * <p>Get the current {@link time Clock#time} on the clock</p>
-	 * @return current time on the clock if its virtual, else the current real time
+	 * @return current time on the clock as ticks if its virtual, else the current real time
 	 */
 	public long getTime() {
 		if(this.virtual) {
