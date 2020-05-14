@@ -65,7 +65,8 @@ public class DiscreteAction implements DiscreteActionInterface {
 		if(this.lapsTime != null) {
 			this.lapsTime -= t;
 		}
-		String string = String.format("[DA] operate spendTime on %s : %s : old time : %i new time : %i", this.getObject().getClass().getName(), this.getObject().hashCode(),old,this.getCurrentLapsTime());
+
+		String string = String.format("[DA] operate spendTime on %s : %s : old time : %d new time : %d", this.getObject().getClass().getName(), this.getObject().hashCode(),old,this.getCurrentLapsTime());
 		this.logger.log(Level.FINE, string);
 	}
 
@@ -87,20 +88,15 @@ public class DiscreteAction implements DiscreteActionInterface {
 	public int compareTo(DiscreteActionInterface c) {
 		if (this.lapsTime == null) { // no lapstime is equivalent to infinity 
 			return 1;
-		}
-		if (c.getCurrentLapsTime() == null) {// no lapstime is equivalent to infinity 
+		}else if(c.getCurrentLapsTime() == null){
 			return -1;
-		}
-    	if(this.lapsTime > c.getCurrentLapsTime()){
+		}else if(this.lapsTime > c.getCurrentLapsTime()){
     		return 1;
-    	}
-    	if(this.lapsTime < c.getCurrentLapsTime()){
+    	}else if (this.lapsTime < c.getCurrentLapsTime()){
     		return -1;
-    	}
-		if(this.lapsTime == c.getCurrentLapsTime()){
+    	}else (this.lapsTime == c.getCurrentLapsTime()){
 			return 0;
 		}
-		return 0;
 	}
 
 	public String toString(){
@@ -111,7 +107,7 @@ public class DiscreteAction implements DiscreteActionInterface {
 	public DiscreteActionInterface next() {
 		Integer old = this.lapsTime;
 		this.lapsTime = this.timer.next();
-		String string = String.format("[DA] operate spendTime on %s : %s : old time : %i new time : %i", this.getObject().getClass().getName(), this.getObject().hashCode(),old,this.getCurrentLapsTime());
+		String string = String.format("[DA] operate spendTime on %s : %s : old time : %d new time : %d", this.getObject().getClass().getName(), this.getObject().hashCode(),old,this.getCurrentLapsTime());
 		this.logger.log(Level.FINE, string);
 		return this;
 	}
