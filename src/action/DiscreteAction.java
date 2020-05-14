@@ -55,7 +55,7 @@ public class DiscreteAction implements DiscreteActionInterface {
 			this.logger.log(Level.WARNING,"exception");
 		}
 		this.timer = timer;
-		//this.updateTimeLaps();
+		this.setLapsTime(0);
 	}
 	
 	// ATTRIBUTION
@@ -119,6 +119,8 @@ public class DiscreteAction implements DiscreteActionInterface {
 	public boolean hasNext() {
 			return (this.timer != null && this.timer.hasNext());
 	}
-	
 
+	public void setLapsTime(Integer lapsTime) {
+		this.lapsTime = lapsTime;
+	}
 }
