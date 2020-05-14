@@ -3,7 +3,7 @@ package timer;
 import java.util.*;
 
 /**
- * DateTimer will be used to TODO
+ * DateTimer is used to create an ArrayList of time laps either directly into the constructor or from a set of Integer that are considered as dates
  *
  * DateTimer implements {@link Timer}
  * @author Antonin ROSA-MARTIN

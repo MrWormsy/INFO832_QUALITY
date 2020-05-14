@@ -1,7 +1,7 @@
 package timer;
 
 /**
- * OneShotTimer will be used to TODO
+ * OneShotTimer is used to produce a {@link Timer} that can be used only once
  *
  * OneShotTimer implements {@link Timer}
  * @author Antonin ROSA-MARTIN

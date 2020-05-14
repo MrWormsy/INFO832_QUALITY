@@ -1,7 +1,7 @@
 package timer;
 
 /**
- * PeriodicTimer will be used to TODO
+ * PeriodicTimer is used to create a {@link Timer} with a next value equals to the period (and if an at param is provided the first next value of this PeriodicTimer will be the value of at)
  *
  * PeriodicTimer implements {@link Timer}
  * @author Antonin ROSA-MARTIN

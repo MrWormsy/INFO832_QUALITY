@@ -3,7 +3,7 @@ package timer;
 import java.util.Random;
 
 /**
- * RandomTimer will be used to TODO
+ * RandomTimer is used to return a random value according to a distribution law
  *
  * RandomTimer implements {@link Timer}
  * @author Antonin ROSA-MARTIN

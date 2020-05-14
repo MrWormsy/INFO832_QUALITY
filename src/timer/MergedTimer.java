@@ -1,7 +1,7 @@
 package timer;
 
 /**
- * MergedTimer will be used to TODO
+ * MergedTimer is used to merge two {@link Timer} as one and the next value is the sum of the two Timers' next values
  *
  * MergedTimer implements {@link Timer}
  * @author Antonin ROSA-MARTIN

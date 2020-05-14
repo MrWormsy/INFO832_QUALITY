@@ -120,9 +120,6 @@ public class TimeBoundedTimer implements Timer {
         return this.hasNext;
     }
 
-    // TODO JE DEVIENS FOU ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // TODO JE COMPRENDS PAS A QUOI CA SERT !!!!!!!!!!!!
-
     /**
      * <p>Returns the next value of the Timer and update the future next value</p>
      *
