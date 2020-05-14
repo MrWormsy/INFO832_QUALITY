@@ -1,4 +1,8 @@
 /ProjetQuality.iml
-/.idea/
+.idea/
 /out/
 /target/
+
+.classpath
+org.*
+.project

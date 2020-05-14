@@ -1,42 +1,73 @@
 package timer;
 
-import java.util.Iterator;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.*;
 
-public class DateTimer  implements Timer {
-	
-	Vector<Integer> lapsTimes;
-	Iterator<Integer> it;
-	
-	public DateTimer(TreeSet<Integer> dates) {
-		this.lapsTimes = new Vector<Integer>();
-		Integer last;
-		Integer current=0;
-		
-		Iterator<Integer> itr = dates.iterator();
-		while (itr.hasNext()) {
-			last = current;
-			current = itr.next();
-			this.lapsTimes.add(current-last);
-		}
-		this.it = this.lapsTimes.iterator();
+/**
+ * DateTimer is used to create an ArrayList of time laps either directly into the constructor or from a set of Integer that are considered as dates
+ *
+ * DateTimer implements {@link Timer}
+ * @author Antonin ROSA-MARTIN
+ *
+ */
 
-	}
-	
-	public DateTimer(Vector<Integer> lapsTimes) {
-		this.lapsTimes = new Vector<Integer>(lapsTimes);
-		this.it = this.lapsTimes.iterator();
-	}
+public class DateTimer implements Timer {
 
-	@Override
-	public boolean hasNext() {
-		return it.hasNext();
-	}
+    /**
+     * Used to get the lapsed time between the set of time
+     */
+    private ArrayList<Integer> lapsTimes;
 
-	@Override
-	public Integer next() {
-		return it.next();
-	}
+    /**
+     * The iterator of the DateTimer
+     */
+    private Iterator<Integer> iterator;
 
+    /**
+     * <p>{@link DateTimer constructor with a Set<Integer> dates}</p>
+     *
+     * @param dates The set of dates you want to use to compute the time laps
+     */
+    public DateTimer(Set<Integer> dates) {
+        this.lapsTimes = new ArrayList<>();
+        Integer last;
+        Integer current = 0;
+
+        for (Integer date : dates) {
+            last = current;
+            current = date;
+            this.lapsTimes.add(current - last);
+        }
+        this.iterator = this.lapsTimes.iterator();
+    }
+
+    /**
+     * <p>{@link DateTimer constructor with a List<Integer> lapsTimes}</p>
+     *
+     * @param lapsTimes The list of times you want to wait
+     */
+    public DateTimer(List<Integer> lapsTimes) {
+        this.lapsTimes = new ArrayList<>(lapsTimes);
+        this.iterator = this.lapsTimes.iterator();
+    }
+
+
+    /**
+     * <p>Check if the the iterator has a next value to return</p>
+     *
+     * @return true if the iterator has a next value, false otherwise
+     */
+    @Override
+    public boolean hasNext() {
+        return iterator.hasNext();
+    }
+
+    /**
+     * <p>Return the next value of the iterator</p>
+     *
+     * @return the next value of the {@link DateTimer} (can be null)
+     */
+    @Override
+    public Integer next() {
+        return iterator.next();
+    }
 }

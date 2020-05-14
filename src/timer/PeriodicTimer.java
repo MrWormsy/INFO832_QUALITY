@@ -1,85 +1,114 @@
 package timer;
 
+/**
+ * PeriodicTimer is used to create a {@link Timer} with a next value equals to the period (and if an at param is provided the first next value of this PeriodicTimer will be the value of at)
+ *
+ * PeriodicTimer implements {@link Timer}
+ * @author Antonin ROSA-MARTIN
+ *
+ */
 public class PeriodicTimer implements Timer {
 
-	private int period;
-	private int next;
-	private RandomTimer moreOrLess = null;
-	
-	public PeriodicTimer(int at) {
-		this.period = at;
-		this.next = at;
-	}
-	
-	/**
-	 * @param at
-	 * @param moreOrLess
-	 * 
-	 * use MergedTimer instead
-	 */
-	@Deprecated
-	public PeriodicTimer(int at, RandomTimer moreOrLess) {
-		this.period = at;
-		this.moreOrLess = moreOrLess;
-		this.next = at + (int)(this.moreOrLess.next() - this.moreOrLess.getMean());
-	}
-	
-	public PeriodicTimer(int period, int at) {
-		this.period = period;
-		this.next = at;
-	}
-	
-	/**
-	 * @param period
-	 * @param at
-	 * @param moreOrLess
-	 * 
-	 * use MergedTimer instead
-	 */
-	@Deprecated
-	public PeriodicTimer(int period, int at, RandomTimer moreOrLess) {
-		this.period = period;
-		this.moreOrLess = moreOrLess;
-		this.next = at + (int)(this.moreOrLess.next() - this.moreOrLess.getMean());
-	}
-	
-	public int getPeriod() {
-		return this.period;
-	}
-	
-	
-	@Override
-	public Integer next() {
-		
-		int next =  this.next;
-		
-		if(this.moreOrLess != null) {
-			this.next = this.period + (int)(this.moreOrLess.next() - this.moreOrLess.getMean());
-		}else {
-			this.next = this.period;
-		}
-		
-		return next;
-	}
-	
-	/*@Override
-	public Integer next(int since) {
-		
-		int next = (this.at - (since % this.period) + this.period) % this.period;
-		
-		if(this.moreOrLess != null) {
-			next += this.moreOrLess.next() - this.moreOrLess.getMean();
-			this.next = this.period * 2 - next;
-		}else {
-			this.next = this.period;
-		}
-		
-		return next;
-	}*/
+    /**
+     * Integer used for the period of the {@link PeriodicTimer}
+     */
+    private int period;
 
-	@Override
-	public boolean hasNext() {
-		return true;
-	}
+    /**
+     * Integer used as the next return value of the {@link PeriodicTimer}
+     */
+    private int next;
 
+    /**
+     * {@link RandomTimer} used to TODO
+     */
+    private RandomTimer moreOrLess = null;
+
+    /**
+     * <p>Create a {@link PeriodicTimer} with both the same value for the period and the next value</p>
+     *
+     * @param at used to be both the period and the next value
+     */
+    public PeriodicTimer(int at) {
+        this.period = at;
+        this.next = at;
+    }
+
+    // TODO CONTINUE HERE
+
+    /**
+     * @param at The period of the {@link PeriodicTimer}
+     * @param moreOrLess use MergedTimer instead
+     * @deprecated because the can use {@link MergedTimer} which is better
+     */
+    @Deprecated
+    public PeriodicTimer(int at, RandomTimer moreOrLess) {
+        this.period = at;
+        this.moreOrLess = moreOrLess;
+        this.next = at + (int) (this.moreOrLess.next() - this.moreOrLess.getMean());
+    }
+
+    /**
+     * <p>Create a {@link PeriodicTimer} with a given period and a next value</p>
+     *
+     * @param period The period of the {@link PeriodicTimer} which is the same next value after the first next call
+     * @param at The first next value
+     */
+    public PeriodicTimer(int period, int at) {
+        this.period = period;
+        this.next = at;
+    }
+
+    /**
+     * @param period The period of the {@link PeriodicTimer}
+     * @param at The first next value
+     * @param moreOrLess use MergedTimer instead
+     * @deprecated because the can use {@link MergedTimer} which is better
+     */
+    @Deprecated
+    public PeriodicTimer(int period, int at, RandomTimer moreOrLess) {
+        this.period = period;
+        this.moreOrLess = moreOrLess;
+        this.next = at + (int) (this.moreOrLess.next() - this.moreOrLess.getMean());
+    }
+
+    /**
+     * <p>Returns the period of the {@link PeriodicTimer}</p>
+     *
+     * @return the period of this Timer
+     */
+    public int getPeriod() {
+        return this.period;
+    }
+
+    /**
+     * <p>Returns the value of the {@link PeriodicTimer}</p>
+     *
+     * @return the next value of the Timer
+     */
+    @Override
+    public Integer next() {
+
+        int previousNext = this.next;
+
+        if (this.moreOrLess != null) {
+
+            // This has no sense
+            this.next = this.period + (int) (this.moreOrLess.next() - this.moreOrLess.getMean());
+        } else {
+            this.next = this.period;
+        }
+
+        return previousNext;
+    }
+
+    /**
+     * <p>Know if the Timer has a next value</p>
+     *
+     * @return always true as this Timer is a {@link PeriodicTimer}
+     */
+    @Override
+    public boolean hasNext() {
+        return true;
+    }
 }
