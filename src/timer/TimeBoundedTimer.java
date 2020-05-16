@@ -132,6 +132,9 @@ public class TimeBoundedTimer implements Timer {
 
         if (this.time < this.stopTime) {
             this.next = this.timerToBound.next();
+
+            // We check that for the next round the Timer has a next value
+            this.hasNext = this.timerToBound.hasNext();
         } else {
             // Here this is not previousNext but this.next otherwise there will be a NullPointerException and the null value if for the next method call
             this.next = null;
