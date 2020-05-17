@@ -2,7 +2,7 @@ package action;
 
 import java.lang.reflect.Method;
 import java.util.TreeSet;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import timer.DateTimer;
 import timer.Timer;
@@ -44,6 +44,9 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		this.currentAction = this.offAction;
 		this.currentLapsTime = 0;
 	}
+	
+	private void dates2Timalapse(TreeSet<Integer> datesOn, TreeSet<Integer> datesOff, ArrayList<Integer> timeLapseOn, ArrayList<Integer> timeLapseOff) {
+		ArrayList<Integer> currentTimeLapse;
 
 	/**
 	 * @param datesOn
@@ -51,8 +54,7 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 	 * @param timeLapseOn
 	 * @param timeLapseOff
 	 */
-	private void dates2Timalapse(TreeSet<Integer> datesOn, TreeSet<Integer> datesOff, Vector<Integer> timeLapseOn, Vector<Integer> timeLapseOff) {
-		Vector<Integer> currentTimeLapse;
+
 		TreeSet<Integer> currentDates;
 		Integer date=0;
 		if(datesOn.first()<datesOff.first()) {
@@ -83,6 +85,7 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		
 	}
 
+
 	/**
 	 * @param o
 	 * @param on
@@ -91,8 +94,8 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 	 * @param datesOff
 	 */
 	public DiscreteActionOnOffDependent(Object o, String on, TreeSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
-		/*Vector<Integer> timeLapseOn = new Vector<Integer>();
-		Vector<Integer> timeLapseOff = new Vector<Integer>();
+		/*ArrayList<Integer> timeLapseOn = new ArrayList<Integer>();
+		ArrayList<Integer> timeLapseOff = new ArrayList<Integer>();
 		
 		dates2Timalapse((TreeSet<Integer>)datesOn.clone(), (TreeSet<Integer>)datesOff.clone(), timeLapseOn, timeLapseOff);
 		*/
