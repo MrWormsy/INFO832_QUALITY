@@ -33,8 +33,11 @@ public class DiscreteActionSimulator implements Runnable {
 	
 	private Logger logger;
 	private FileHandler logFile; 
-	private ConsoleHandler logConsole; 
+	private ConsoleHandler logConsole;
 
+	/**
+	 * write logs of the simulation
+	 */
 	public DiscreteActionSimulator(){
 		
 		// Start logger
@@ -72,7 +75,11 @@ public class DiscreteActionSimulator implements Runnable {
 			this.step = -1;
 		}
 	}
-	
+
+	/**
+	 * Add action to the list
+	 * @param c
+	 */
 	public void addAction(DiscreteActionInterface c){
 
 		if(c.hasNext()) {
@@ -133,6 +140,9 @@ public class DiscreteActionSimulator implements Runnable {
 		return sleepTime;
 	}
 
+	/**
+	 * @param runningTimeOf1stCapsul
+	 */
 	private void updateTimes(int runningTimeOf1stCapsul){
 		
 		// update time laps off all actions
@@ -171,6 +181,7 @@ public class DiscreteActionSimulator implements Runnable {
 			Collections.sort(this.actionsList);
 		}
 	}
+
 
 
 	public void run() {
@@ -222,7 +233,8 @@ public class DiscreteActionSimulator implements Runnable {
 		System.out.println("STOP THREAD " + t.getName() + "obj " + this);
 		this.running = false;
 	}
-	
+
+
 	public String toString(){
 		StringBuffer toS = new StringBuffer("------------------\nTestAuto :" + this.actionsList.size());
 		for(DiscreteActionInterface c : this.actionsList){

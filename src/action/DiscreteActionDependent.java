@@ -32,12 +32,67 @@ public class DiscreteActionDependent implements DiscreteActionInterface {
 		this.it = this.depedentActions.iterator();
 		this.currentAction = this.baseAction;
 	}
-	
+
+	/**
+	 * @param o
+	 * @param depentMethodName
+	 * @param timerDependence
+	 */
 	public void addDependence(Object o, String depentMethodName, Timer timerDependence) {
 		this.depedentActions.add(new DiscreteAction(o, depentMethodName, timerDependence));
 	}
-	
 
+	/**
+	 *
+	 */
+	/*private void dates2Timalapse(TreeSet<Integer> datesOn, TreeSet<Integer> datesOff, Vector<Integer> timeLapseOn, Vector<Integer> timeLapseOff) {
+		Vector<Integer> currentTimeLapse;
+		TreeSet<Integer> currentDates;
+		Integer date=0;
+		if(datesOn.first()<datesOff.first()) {
+			currentTimeLapse = timeLapseOn;
+			currentDates = datesOn;
+		}else {
+			currentTimeLapse = timeLapseOff;	
+			currentDates = datesOff;		
+		}
+		Integer nextDate;
+		
+		while(datesOn.size()>0 || datesOff.size()>0) {
+			nextDate = currentDates.first();
+		
+			currentTimeLapse.add(nextDate - date);
+			currentDates.remove(nextDate);
+		
+			date = nextDate;
+			
+			if(currentDates == datesOn) {
+				currentDates = datesOff;
+				currentTimeLapse = timeLapseOff;
+			}else {
+				currentDates = datesOn;
+				currentTimeLapse = timeLapseOn;			
+			}
+		}
+		
+	}
+	@SuppressWarnings("unchecked")
+	public DiscreteActionDependent(Wo o, String on, TreeSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
+		Vector<Integer> timeLapseOn = new Vector<Integer>();
+		Vector<Integer> timeLapseOff = new Vector<Integer>();
+		
+		dates2Timalapse((TreeSet<Integer>)datesOn.clone(), (TreeSet<Integer>)datesOff.clone(), timeLapseOn, timeLapseOff);
+		
+		this.baseAction = new DiscreteAction(o, on, timeLapseOn);
+		this.offAction = new DiscreteAction(o, off, timeLapseOff);
+		
+		if(datesOn.first() < datesOff.first()){
+			this.currentAction = this.baseAction;
+		}else{
+			this.currentAction = this.offAction;
+		}
+	}
+*/
 	private void reInit() {
 
 		for (Iterator<DiscreteAction> iter = this.depedentActions.iterator(); iter.hasNext(); ) {

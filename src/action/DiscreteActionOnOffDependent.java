@@ -47,6 +47,14 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 	
 	private void dates2Timalapse(TreeSet<Integer> datesOn, TreeSet<Integer> datesOff, ArrayList<Integer> timeLapseOn, ArrayList<Integer> timeLapseOff) {
 		ArrayList<Integer> currentTimeLapse;
+
+	/**
+	 * @param datesOn
+	 * @param datesOff
+	 * @param timeLapseOn
+	 * @param timeLapseOff
+	 */
+
 		TreeSet<Integer> currentDates;
 		Integer date=0;
 		if(datesOn.first()<datesOff.first()) {
@@ -76,6 +84,15 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		}
 		
 	}
+
+
+	/**
+	 * @param o
+	 * @param on
+	 * @param datesOn
+	 * @param off
+	 * @param datesOff
+	 */
 	public DiscreteActionOnOffDependent(Object o, String on, TreeSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
 		/*ArrayList<Integer> timeLapseOn = new ArrayList<Integer>();
 		ArrayList<Integer> timeLapseOff = new ArrayList<Integer>();
@@ -94,6 +111,10 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		}
 	}
 
+	/**
+	 * If there is an action you finish it and go on the next one
+	 * If not go directly onto the next one
+	 */
 	public void nextAction(){
 		if (this.currentAction == this.onAction){
 			this.currentAction = this.offAction;

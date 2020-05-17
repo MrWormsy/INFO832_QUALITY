@@ -23,8 +23,8 @@ public class DiscreteAction implements DiscreteActionInterface {
 	private Integer lapsTime; 			// waiting time (null if never used)
 
 	// Constructor
-	
-	public DiscreteAction() {
+	private DiscreteAction() {
+
 		// Start logger
 			this.logger = Logger.getLogger("DAS");
 			//this.logger = Logger.getLogger("APP");
@@ -44,8 +44,13 @@ public class DiscreteAction implements DiscreteActionInterface {
 			this.logger.addHandler(logFile);
 			this.logger.addHandler(logConsole);*/
 	}
-	
-	public DiscreteAction(Object o, String m, Timer timer){
+
+	/**
+	 * @param o
+	 * @param m
+	 * @param timmer
+	 */
+	public DiscreteAction(Object o, String m, Timer timmer){
 		this();
 		this.object = o;
 		try{	
@@ -60,6 +65,9 @@ public class DiscreteAction implements DiscreteActionInterface {
 	
 	// ATTRIBUTION
 
+	/**
+	 * @param t
+	 */
 	public void spendTime(int t) {
 		Integer old = this.lapsTime;
 		if(this.lapsTime != null) {
@@ -83,7 +91,10 @@ public class DiscreteAction implements DiscreteActionInterface {
 	}
 
 
-
+	/**
+	 * @param c
+	 * @return int (-1 or 0 or  1)
+	 */
 	// COMPARAISON
 	public int compareTo(DiscreteActionInterface c) {
 		if (this.lapsTime == null) { // no lapstime is equivalent to infinity 
@@ -99,6 +110,9 @@ public class DiscreteAction implements DiscreteActionInterface {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public String toString(){
 		System.out.println(this.object);
 		System.out.println(this.method);
@@ -106,6 +120,9 @@ public class DiscreteAction implements DiscreteActionInterface {
 
 	}
 
+	/**
+	 * @return DiscreteActionInterface
+	 */
 	public DiscreteActionInterface next() {
 		Integer old = this.lapsTime;
 		this.lapsTime = this.timer.next();
@@ -114,6 +131,9 @@ public class DiscreteAction implements DiscreteActionInterface {
 		return this;
 	}
 
+	/**
+	 * @return boolean if timer hasNext and timmer not null
+	 */
 	public boolean hasNext() {
 			return (this.timer != null && this.timer.hasNext());
 	}

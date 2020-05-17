@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b6149f4b-d5c2-49e4-aa6a-a830679a129c" name="Default Changelist" comment="Add javadoc to action package">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/discreteBehaviorSimulator/DiscreteActionSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/discreteBehaviorSimulator/DiscreteActionSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/discreteBehaviorSimulator/LogFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/discreteBehaviorSimulator/LogFormatter.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\HENAFF\Documents\Cours\S8\INFO832 - Qualité et tests logiciel\Proj\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aXGIALlK4Eexj9gm4HaS5jfhwD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="NodeJSConfigurationType" singleton="false">
+      <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
+        <profiling log-folder="C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\jbr\bin\." />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6149f4b-d5c2-49e4-aa6a-a830679a129c" name="Default Changelist" comment="" />
+      <created>1586874442923</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586874442923</updated>
+      <workItem from="1586874448780" duration="854000" />
+      <workItem from="1586931368509" duration="309000" />
+      <workItem from="1587105483637" duration="3237000" />
+      <workItem from="1587109346780" duration="952000" />
+      <workItem from="1587111951931" duration="313000" />
+      <workItem from="1587112287622" duration="86000" />
+      <workItem from="1587112380158" duration="665000" />
+      <workItem from="1587124126809" duration="765000" />
+      <workItem from="1588747242090" duration="4135000" />
+      <workItem from="1588752136544" duration="71000" />
+      <workItem from="1588752455933" duration="1553000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add javadoc to action package">
+      <created>1588751422414</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588751422414</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+      <path value="$PROJECT_DIR$/INFO832_QUALITY" />
+    </ignored-roots>
+    <MESSAGE value="Add javadoc to action package" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add javadoc to action package" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2440" y="115" key="CommitChangelistDialog2" timestamp="1588752578349">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2440" y="115" key="CommitChangelistDialog2/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588752578349" />
+    <state x="2660" y="247" key="FileChooserDialogImpl" timestamp="1587134608503">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="247" key="FileChooserDialogImpl/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587134608503" />
+    <state x="2360" y="95" key="SettingsEditor" timestamp="1588749921636">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2360" y="95" key="SettingsEditor/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588749921636" />
+    <state x="2472" y="254" key="Vcs.Push.Dialog.v2" timestamp="1588751424438">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="254" key="Vcs.Push.Dialog.v2/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588751424438" />
+    <state x="2400" y="269" key="com.intellij.ide.util.TipDialog" timestamp="1588752457368">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2400" y="269" key="com.intellij.ide.util.TipDialog/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588752457368" />
+    <state x="367" y="186" key="com.intellij.ide.util.TipDialog/63.0.1217.720/1920.0.1920.1040@63.0.1217.720" timestamp="1586931370712" />
+    <state x="2689" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588749632157">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2689" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1588749632157" />
+    <state x="2262" y="141" key="new project wizard" timestamp="1587134682369">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2262" y="141" key="new project wizard/63.0.1217.720/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587134682369" />
+  </component>
+</project>
