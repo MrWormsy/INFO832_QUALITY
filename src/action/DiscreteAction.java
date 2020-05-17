@@ -1,14 +1,8 @@
 package action;
 
 import java.lang.reflect.Method;
-import java.util.TreeSet;
-import java.util.Vector;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import discreteBehaviorSimulator.LogFormatter;
 import timer.Timer;
 
 /**
@@ -19,19 +13,18 @@ import timer.Timer;
 
 // TODO must inherit from Action
 public class DiscreteAction implements DiscreteActionInterface {
+	private Logger logger;
 	private Object object;
 	private Method method;
 	
-	
-	private Timer timmer;				// timer provides new lapsTime
+	private Timer timer;				// timer provides new lapsTime
 	//private TreeSet<Integer> dates;	// obsolete, managed in timer 
 	//private Vector<Integer> lapsTimes;// obsolete, managed in timer
 	private Integer lapsTime; 			// waiting time (null if never used)
-	
-	private Logger logger;
 
 	// Constructor
 	private DiscreteAction() {
+
 		// Start logger
 			this.logger = Logger.getLogger("DAS");
 			//this.logger = Logger.getLogger("APP");
@@ -64,10 +57,10 @@ public class DiscreteAction implements DiscreteActionInterface {
 			this.method = o.getClass().getDeclaredMethod(m, new Class<?>[0]);
 		}
 		catch(Exception e){
-			e.printStackTrace();
+			this.logger.log(Level.WARNING,"exception");
 		}
-		this.timmer = timmer;
-		//this.updateTimeLaps();
+		this.timer = timer;
+		this.setLapsTime(0);
 	}
 	
 	// ATTRIBUTION
@@ -80,8 +73,9 @@ public class DiscreteAction implements DiscreteActionInterface {
 		if(this.lapsTime != null) {
 			this.lapsTime -= t;
 		}
-		this.logger.log(Level.FINE, "[DA] operate spendTime on  " + this.getObject().getClass().getName() + ":" + this.getObject().hashCode() + ": old time " + old + " new time " + this.getCurrentLapsTime());
-		//System.out.println(         "[DA] operate spendTime on  " + this.getObject().getClass().getName() + ":" + this.getObject().hashCode() + ": old time " + old + " new time " + this.getCurrentLapsTime() + "\n");
+
+		String string = String.format("[DA] operate spendTime on %s : %s : old time : %d new time : %d", this.getObject().getClass().getName(), this.getObject().hashCode(),old,this.getCurrentLapsTime());
+		this.logger.log(Level.FINE, string);
 	}
 
 	// RECUPERATION
@@ -105,27 +99,24 @@ public class DiscreteAction implements DiscreteActionInterface {
 	public int compareTo(DiscreteActionInterface c) {
 		if (this.lapsTime == null) { // no lapstime is equivalent to infinity 
 			return 1;
-		}
-		if (c.getCurrentLapsTime() == null) {// no lapstime is equivalent to infinity 
+		}else if(c.getCurrentLapsTime() == null){
 			return -1;
-		}
-    	if(this.lapsTime > c.getCurrentLapsTime()){
+		}else if(this.lapsTime > c.getCurrentLapsTime()){
     		return 1;
-    	}
-    	if(this.lapsTime < c.getCurrentLapsTime()){
+    	}else if (this.lapsTime < c.getCurrentLapsTime()){
     		return -1;
-    	}
-		if(this.lapsTime == c.getCurrentLapsTime()){
+    	}else{
 			return 0;
 		}
-		return 0;
 	}
 
 	/**
 	 * @return
 	 */
 	public String toString(){
-		return "Object : " + this.object.getClass().getName() + "\n Method : " + this.method.getName()+"\n Stat. : "+ this.timmer + "\n delay: " + this.lapsTime;
+		System.out.println(this.object);
+		System.out.println(this.method);
+		return "Object : " + this.object.getClass().getName() + "\n Method : " + this.method.getName()+"\n Stat. : "+ this.timer + "\n delay: " + this.lapsTime;
 
 	}
 
@@ -134,9 +125,9 @@ public class DiscreteAction implements DiscreteActionInterface {
 	 */
 	public DiscreteActionInterface next() {
 		Integer old = this.lapsTime;
-		this.lapsTime = this.timmer.next();
-		this.logger.log(Level.FINE, "[DA] operate next on  " + this.getObject().getClass().getName() + ":" + this.getObject().hashCode() + ": old time " + old + " new time " + this.getCurrentLapsTime());
-		//System.out.println("[DA] operate 'next' on " + this.getObject().getClass().getName() + ":" + this.getObject().hashCode() + ": old time " + old + " new time " + this.getCurrentLapsTime() + "\n");
+		this.lapsTime = this.timer.next();
+		String string = String.format("[DA] operate spendTime on %s : %s : old time : %d new time : %d", this.getObject().getClass().getName(), this.getObject().hashCode(),old,this.getCurrentLapsTime());
+		this.logger.log(Level.FINE, string);
 		return this;
 	}
 
@@ -144,16 +135,10 @@ public class DiscreteAction implements DiscreteActionInterface {
 	 * @return boolean if timer hasNext and timmer not null
 	 */
 	public boolean hasNext() {
-		Boolean more=false;
-		if (this.timmer != null && this.timmer.hasNext()) {
-			more = true;
-		}/*else if (this.dates != null) {
-			more = !this.dates.isEmpty();
-		}else if (this.lapsTimes != null) {
-			more = !this.lapsTimes.isEmpty();
-		}*/
-		return more;		
+			return (this.timer != null && this.timer.hasNext());
 	}
-	
 
+	public void setLapsTime(Integer lapsTime) {
+		this.lapsTime = lapsTime;
+	}
 }

@@ -94,10 +94,10 @@ public class DiscreteActionDependent implements DiscreteActionInterface {
 	}
 */
 	private void reInit() {
-		//this.baseAction.updateTimeLaps();
+
 		for (Iterator<DiscreteAction> iter = this.depedentActions.iterator(); iter.hasNext(); ) {
-		    DiscreteAction element = iter.next();
-		    //element.updateTimeLaps();
+		     iter.next();
+
 		}		
 	}
 	
@@ -122,7 +122,7 @@ public class DiscreteActionDependent implements DiscreteActionInterface {
 
 	public void updateTimeLaps() {
 		// time laps is updated at the re-initialization
-		//this.currentAction.updateTimeLaps();	
+
 		this.nextMethod();	
 	}
 
@@ -147,9 +147,9 @@ public class DiscreteActionDependent implements DiscreteActionInterface {
 	}
 
 	public DiscreteActionInterface next() {
-		//Integer lapsTime = this.getNextLapsTime();
-		Method method = this.getMethod();
-		Object object = this.getObject();
+
+		 this.getMethod();
+		 this.getObject();
 		return this;
 	}
 

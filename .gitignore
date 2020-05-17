@@ -1,6 +1,10 @@
 /ProjetQuality.iml
 .idea/
+
 bin/
 /out/
 /target/
 
+.classpath
+org.*
+.project
