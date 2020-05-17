@@ -13,15 +13,14 @@ import action.DiscreteActionInterface;
 
 
 /**
- * 
+ * <p>This class allows to manage discrete action in the simulation.</p>
  * @author Tiphaine Bulou (2016)
  * @author Flavien Vernier
  * @see Runnable
  */
 public class DiscreteActionSimulator implements Runnable {
 
-
-	private Thread t;						// running thread for simulation
+	private Thread t;						// simulation thread
 	private boolean running = false;		// tells if the simulation is running or not
 	
 	private Clock globalTime;				// clock for measuring time in simulation
@@ -32,7 +31,7 @@ public class DiscreteActionSimulator implements Runnable {
 	private int step;						// number of the current step
 	
 	private Logger logger;					// manage log functions
-	private FileHandler logFile; 			// manage log writting
+	private FileHandler logFile; 			// manage log writing
 	private ConsoleHandler logConsole;		// manage log printing
 
 
@@ -56,7 +55,6 @@ public class DiscreteActionSimulator implements Runnable {
 		}
 		this.logger.addHandler(logFile);
 		this.logger.addHandler(logConsole);
-		
 
 		this.globalTime = Clock.getInstance();
 		
@@ -255,7 +253,7 @@ public class DiscreteActionSimulator implements Runnable {
 	 */
 	public String toString() {
 		StringBuffer toS = new StringBuffer("------------------\nTestAuto :" + this.actionsList.size());
-		for(DiscreteActionInterface c : this.actionsList){
+		for(DiscreteActionInterface c : this.actionsList) {
 			toS.append(c.toString() + "\n");
 		}
 		toS.append("---------------------\n");

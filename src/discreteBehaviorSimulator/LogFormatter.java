@@ -16,7 +16,7 @@ public class LogFormatter extends Formatter {
 	/**
 	 * <p>Constructor of class {@link LogFormatter}</p>
 	 * @param rec log record to format
-	 * @return string formated log record as a {@link StringBuffer}
+	 * @return string formatted log record as a {@link StringBuffer}
 	 */
 	public String format(LogRecord rec) {
 		StringBuffer buf = new StringBuffer();
@@ -31,8 +31,10 @@ public class LogFormatter extends Formatter {
 		return buf.toString();
 	}
 
-	/*
+	/**
 	 * Transform timestamp into a more meaningful string date
+	 * @param millisecs timestamp in milliseconds
+	 * @return string formatted date
 	 */
 	private String calcDate(long millisecs) {
 	    SimpleDateFormat date_format = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss.SS");
@@ -41,7 +43,7 @@ public class LogFormatter extends Formatter {
 	  }
 
 	  /**
-	   * <p>Super implementation of parent class</p>
+	   * <p>Return the header string for a set of formatted records</p>
 	   * @see Formatter#getHead(Handler)
 	   */
 	  public String getHead(Handler h) {
@@ -49,8 +51,8 @@ public class LogFormatter extends Formatter {
 	  }
 	  
 	  /**
-	   * <p>Super implementation of parent class</p>
-	   * @see Formatter#getHead(Handler)
+	   * <p>Return the tail string for a set of formatted records</p>
+	   * @see Formatter#getTail(Handler)
 	   */
 	  public String getTail(Handler h) {
 	    return "";

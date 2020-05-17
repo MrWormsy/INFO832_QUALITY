@@ -52,7 +52,7 @@ public class Clock {
 	}
 
 	/**
-	 * <p>Remove an observer from the set
+	 * <p>Remove an observer from the set</p>
 	 * @param o observer to remove
 	 */
 	public void removeObserver(ClockObserver o) {
