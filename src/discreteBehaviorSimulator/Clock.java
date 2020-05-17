@@ -85,20 +85,6 @@ public class Clock {
 		}
 	}
 
-	/*public void setTime(int time) throws IllegalAccessException {
-		this.lock.lock();
-		if (this.time < time) {
-			this.time = time;
-			for(ClockObserver o:this.observers) {
-				o.ClockChange();
-			}
-		}else{
-			this.lock.unlock();
-			throw new IllegalAccessException("Set time error, cannot go back to the past !!!");
-		}
-		this.lock.unlock();
-	}*/
-
 	/**
 	 * <p>Increase time on clock and notice this change to an observer</p>
 	 * @param time increase value
@@ -162,6 +148,6 @@ public class Clock {
 	 * <p>Convert current {@link time Clock#time} into String</p>
 	 */
 	public String toString() {
-		return ""+this.time;
+		return String.valueOf(this.time);
 	}
 }
