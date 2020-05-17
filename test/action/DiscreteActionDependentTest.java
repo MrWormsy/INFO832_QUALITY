@@ -65,5 +65,51 @@ class DiscreteActionDependentTest {
     }
 
 
+    @org.junit.jupiter.api.Test
+    void spendTime() {
+        Object object = new TestObject();
+        OneShotTimer oneShotTimerON = new OneShotTimer(1);
+        DiscreteActionDependent discreteActionDependent = new DiscreteActionDependent(object,"methodtest",oneShotTimerON);
+        discreteActionDependent.spendTime(5);
+
+    }
+
+
+    @org.junit.jupiter.api.Test
+    void compareTo() {
+        // coverage
+        Object object = new TestObject();
+        OneShotTimer oneShotTimerON = new OneShotTimer(1);
+        DiscreteActionDependent discreteActionDependent = new DiscreteActionDependent(object,"methodtest",oneShotTimerON);
+        discreteActionDependent.compareTo(discreteActionDependent);
+        // compare to tested in DiscreteAction
+
+
+    }
+
+    @org.junit.jupiter.api.Test
+    void next() {
+        // coverage
+        Object object = new TestObject();
+        OneShotTimer oneShotTimerON = new OneShotTimer(1);
+        DiscreteActionDependent discreteActionDependent = new DiscreteActionDependent(object,"methodtest",oneShotTimerON);
+        discreteActionDependent.next();
+        // compare to tested in DiscreteAction
+
+    }
+
+    @org.junit.jupiter.api.Test
+    void hasNext() {
+        // coverage
+        Object object = new TestObject();
+        OneShotTimer oneShotTimerON = new OneShotTimer(1);
+        DiscreteActionDependent discreteActionDependent = new DiscreteActionDependent(object,"methodtest",oneShotTimerON);
+        discreteActionDependent.hasNext();
+        // compare to tested in DiscreteAction
+
+    }
+
+
+
 
 }
