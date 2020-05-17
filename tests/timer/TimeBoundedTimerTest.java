@@ -37,8 +37,8 @@ class TimeBoundedTimerTest {
         // We get the next value and we should get 10
         assertEquals(10, timeBoundedTimer1.next());
 
-        // There is an issue here as the Timer is a OneShotTimer we should only get a next value once
-        // assertFalse(timeBoundedTimer1.hasNext());
+        // As the OneShotTimer has no longer values to return we get false
+        assertFalse(timeBoundedTimer1.hasNext());
 
         // As the OneShotTimer has only one next value BUT the TimeBoundedTimer works like a Timer that return a false hasNext() only if the next valie is greater than the timestop
         // But in our case we will have a NullPointerException as we are using a OneShotTimer

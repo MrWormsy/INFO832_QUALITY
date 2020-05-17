@@ -1,5 +1,7 @@
 package timer;
 
+import org.junit.jupiter.api.Test;
+
 import java.lang.reflect.Executable;
 import java.util.*;
 
@@ -7,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DateTimerTest {
 
-    @org.junit.jupiter.api.Test
+
+    @Test
     void hasNext() {
 
         // I create a new DateTimer with an empty set of Integer and we should get false as there is no next value

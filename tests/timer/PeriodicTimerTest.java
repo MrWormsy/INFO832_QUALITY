@@ -42,7 +42,7 @@ class PeriodicTimerTest {
         int nextValue = 1;
         PeriodicTimer periodicTimer1 = new PeriodicTimer(nextValue);
 
-        // As the PeriodicTimer has always a next value we do it only twice
+        // As the PeriodicTimer has always a next value we can do the test only twice
         assertEquals(nextValue, periodicTimer1.next());
         assertEquals(nextValue, periodicTimer1.next());
 
@@ -56,9 +56,23 @@ class PeriodicTimerTest {
         // Here we only try with a uniform law with the same limit thus the next value will always be 1
         try {
             RandomTimer randomTimer = new RandomTimer(RandomDistribution.UNIFORM, 1, 1);
-            PeriodicTimer periodicTimerWithRandomTimer = new PeriodicTimer(1, randomTimer);
+            PeriodicTimer periodicTimerWithRandomTimer = new PeriodicTimer(nextValue, randomTimer);
 
-            assertEquals(1, periodicTimerWithRandomTimer.next());
+            assertEquals(nextValue, periodicTimerWithRandomTimer.next());
+
+        } catch (IncorrectDistributionException e) {
+            e.printStackTrace();
+        }
+
+        // We want to create a PeriodicTimer with a random timer to trigger the next() value when there is a moreOrLess Timer
+        // Here we only try with a uniform law with the same limit thus the next value will always be 1
+        try {
+            RandomTimer randomTimer = new RandomTimer(RandomDistribution.UNIFORM, 1, 1);
+            PeriodicTimer periodicTimerWithRandomTimer = new PeriodicTimer(periodValue, nextValue, randomTimer);
+
+            assertEquals(nextValue, periodicTimerWithRandomTimer.next());
+
+            assertEquals(periodValue, periodicTimerWithRandomTimer.next());
 
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();
