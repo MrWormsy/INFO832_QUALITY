@@ -94,12 +94,14 @@ public class DiscreteAction implements DiscreteActionInterface {
     		return 1;
     	}else if (this.lapsTime < c.getCurrentLapsTime()){
     		return -1;
-    	}else (this.lapsTime == c.getCurrentLapsTime()){
+    	}else{
 			return 0;
 		}
 	}
 
 	public String toString(){
+		System.out.println(this.object);
+		System.out.println(this.method);
 		return "Object : " + this.object.getClass().getName() + "\n Method : " + this.method.getName()+"\n Stat. : "+ this.timer + "\n delay: " + this.lapsTime;
 
 	}

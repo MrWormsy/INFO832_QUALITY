@@ -76,7 +76,6 @@ public class DiscreteActionOnOffDependent implements DiscreteActionInterface {
 		}
 		
 	}
-	
 	public DiscreteActionOnOffDependent(Object o, String on, TreeSet<Integer> datesOn, String off, TreeSet<Integer> datesOff){
 		/*ArrayList<Integer> timeLapseOn = new ArrayList<Integer>();
 		ArrayList<Integer> timeLapseOff = new ArrayList<Integer>();
