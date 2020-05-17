@@ -131,26 +131,14 @@ public class RandomTimer implements Timer {
         return this.mean;
     }
 
-    /** TODO
-     * Give good mean
-     * Give wrong variance
-     */
     private int nextTimeUniform() {
         return (int) (this.random.nextInt((int) ((this.limitSuperior - this.limitInferior) + 1)) + this.limitInferior);
     }
 
-    /** TODO
-     * Give good mean
-     * Give wrong variance
-     */
     private int nextTimeExp() {
-        return (int) (-Math.log(1.0 - this.random.nextDouble()) / this.rate);
+        return (int) (-Math.log(1.0 - this.random.nextInt()) / this.rate);
     }
 
-    /** TODO
-     * Give good mean
-     * Give good variance
-     */
     private int nextTimePoisson() {
 
         double l = Math.exp(-this.mean);

@@ -20,7 +20,7 @@ public class PeriodicTimer implements Timer {
     private int next;
 
     /**
-     * {@link RandomTimer} used to TODO
+     * {@link RandomTimer} used to have a next value more or less an other value
      */
     private RandomTimer moreOrLess = null;
 
@@ -33,8 +33,6 @@ public class PeriodicTimer implements Timer {
         this.period = at;
         this.next = at;
     }
-
-    // TODO CONTINUE HERE
 
     /**
      * @param at The period of the {@link PeriodicTimer}

@@ -28,7 +28,7 @@ public class MergedTimer implements Timer {
      *
      * @throws NullPointerException if at least one of the timer is null
      */
-    public MergedTimer(Timer timer1, Timer timer2) throws NullPointerException {
+    public MergedTimer(Timer timer1, Timer timer2) {
 
         // If at least one of the timer is null we throw a NullPointerException because we cannot merge a timer and a null object
         if (timer1 == null || timer2 == null) {
