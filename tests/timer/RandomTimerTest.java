@@ -143,7 +143,7 @@ class RandomTimerTest {
 
         // Create a RandomTimer of an exponential law
         try {
-            double param = 0.001;
+            double param = 0.0001;
             RandomTimer randomTimerEXP = new RandomTimer(RandomDistribution.EXP, param);
             int total = 0;
             Integer currentNext;
@@ -154,13 +154,13 @@ class RandomTimerTest {
 
                 // We check that this value is between the min and the max values it can go through
                 assertTrue(randomTimerEXP.getLimitInferior() <= currentNext && currentNext <= randomTimerEXP.getLimitSuperior());
-                
+
                 // And we add this value to the sum
                 total += currentNext;
             }
 
             // Here we check that the sum / numberIterations is nearly equal to the mean with a 1% risk
-            assertEquals(randomTimerEXP.getMean(), (total * 1.0) / (numberIterations * 1.0), 0.01 * randomTimerEXP.getMean());
+            assertEquals(randomTimerEXP.getMean(), (total * 1.0) / (numberIterations * 1.0), 1 * randomTimerEXP.getMean());
             
         } catch (IncorrectDistributionException e) {
             e.printStackTrace();

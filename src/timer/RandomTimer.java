@@ -136,7 +136,7 @@ public class RandomTimer implements Timer {
     }
 
     private int nextTimeExp() {
-        return (int) (-Math.log(1.0 - this.random.nextInt()) / this.rate);
+        return (int) (Math.log(1.0 - this.random.nextInt()) / this.rate);
     }
 
     private int nextTimePoisson() {
